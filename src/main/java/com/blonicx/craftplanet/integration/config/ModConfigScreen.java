@@ -16,8 +16,20 @@ public class ModConfigScreen {
 
         // Category
         var general = builder.getOrCreateCategory(Text.translatable("category.craftplanet.general"));
+        var performance = builder.getOrCreateCategory(Text.translatable("category.craftplanet.performance"));
 
+        // General
         general.addEntry(entry.startBooleanToggle(
+                                Text.translatable("settings.craftplanet.filterChat"),
+                                ConfigManager.config.filterChat
+                        ).setDefaultValue(true)
+                        .setTooltip(Text.translatable("settings.craftplanet.filterChat_tooltip"))
+                        .setSaveConsumer(newValue -> ConfigManager.config.filterChat = newValue)
+                        .build()
+        );
+
+        // Performance
+        performance.addEntry(entry.startBooleanToggle(
                                 Text.translatable("settings.craftplanet.maxSignTextRendering"),
                                 ConfigManager.config.maxSignTextRendering
                         ).setDefaultValue(true)
@@ -26,7 +38,7 @@ public class ModConfigScreen {
                         .build()
         );
 
-        general.addEntry(entry.startBooleanToggle(
+        performance.addEntry(entry.startBooleanToggle(
                                 Text.translatable("settings.craftplanet.disableWeatherRendering"),
                                 ConfigManager.config.disableWeatherRendering
                         ).setDefaultValue(true)
@@ -35,7 +47,7 @@ public class ModConfigScreen {
                         .build()
         );
 
-        general.addEntry(entry.startIntField(
+        performance.addEntry(entry.startIntField(
                                 Text.translatable("settings.craftplanet.maxParticles"),
                                 ConfigManager.config.maxParticles
                         ).setDefaultValue(5000)

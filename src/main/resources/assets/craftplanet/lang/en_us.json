@@ -5,14 +5,19 @@
 
   "key.category.craftplanet.keybinds_category": "CraftPlanet",
 
+  "info.craftplanet.harmful_chat_msg":  "§4Harmful Message!",
+
   "title.craftplanet.config": "CraftPlanet",
 
   "category.craftplanet.general": "General",
+  "category.craftplanet.performance": "Performance",
 
+  "settings.craftplanet.filterChat": "Enable Chat Filtering",
   "settings.craftplanet.maxSignTextRendering": "Enable Max Sign Text Rendering",
   "settings.craftplanet.disableWeatherRendering": "Disable Weather Rendering",
   "settings.craftplanet.maxParticles": "Max Amount of Particles",
 
+  "settings.craftplanet.filterChat_tooltip": "If this is enabled, the chat will not display any messages that contain harmful content",
   "settings.craftplanet.maxSignTextRendering_tooltip": "If this is enabled, Sign Texts in a range of above 10 blocks won't get rendered",
   "settings.craftplanet.disableWeatherRendering_tooltip": "If this is enabled, all weather effects like sound or particles wont get rendered",
   "settings.craftplanet.maxParticles_tooltip": "The maximum amount of Particles that can be rendered at the same time"

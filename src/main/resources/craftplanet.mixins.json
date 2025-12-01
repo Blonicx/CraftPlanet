@@ -4,6 +4,7 @@
 	"compatibilityLevel": "JAVA_21",
 	"mixins": [
 		"gui.SplashTextResourceSupplierMixin",
+      "gui.ChatHudMixin",
 
         "rendering.entity.AbstractSignBlockEntityRenderer",
         "rendering.entity.ParticleRendererMixin",
