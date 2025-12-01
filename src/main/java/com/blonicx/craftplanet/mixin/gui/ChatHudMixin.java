@@ -6,6 +6,7 @@ import net.minecraft.client.gui.hud.ChatHud;
 import net.minecraft.client.gui.hud.MessageIndicator;
 import net.minecraft.network.message.MessageSignatureData;
 import net.minecraft.text.Text;
+import net.minecraft.util.Formatting;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -24,7 +25,7 @@ public abstract class ChatHudMixin {
         String plain = message.getString();
 
         if (HarmfulWordFilterUtil.containsHarmfulWord(plain)) {
-            this.addMessage(Text.translatable("info.craftplanet.harmful_chat_msg"));
+            this.addMessage(Text.translatable("info.craftplanet.harmful_chat_msg").formatted(Formatting.RED));
             ci.cancel();
         }
     }

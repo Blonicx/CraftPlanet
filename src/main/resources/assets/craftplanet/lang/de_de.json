@@ -1,0 +1,26 @@
+{
+  "message.craftplanet.copied_coords": "Koordinaten kopiert!",
+
+  "key.craftplanet.copy_coords": "Koordinaten kopieren",
+
+  "key.category.craftplanet.keybinds_category": "CraftPlanet",
+
+  "info.craftplanet.harmful_chat_msg":  "Böse Nachricht!",
+
+  "title.craftplanet.config": "CraftPlanet",
+
+  "category.craftplanet.general": "Generell",
+  "category.craftplanet.performance": "Leistung",
+
+  "settings.craftplanet.filterChat": "Chat Filterung aktiviren",
+  "settings.craftplanet.disableWeatherRendering": "Wetter Rendering deaktiviren",
+  "settings.craftplanet.maxParticles": "Maximale anzahl an Partikel",
+  "settings.craftplanet.maxSignTextRendering": "Schild Text Render Distanze",
+  "settings.craftplanet.maxBlockEntityRenderDistance": "Block Entity Render Distanze",
+
+  "settings.craftplanet.filterChat_tooltip": "Wenn diese Option aktiviert ist, werden im Chat keine Nachrichten mit schädlichen Inhalten angezeigt.",
+  "settings.craftplanet.disableWeatherRendering_tooltip": "Wenn diese Option aktiviert ist, werden alle Wettereffekte wie Geräusche oder Partikel nicht gerendert.",
+  "settings.craftplanet.maxParticles_tooltip": "Die maximale Anzahl an Partikeln, die gleichzeitig gerendert werden können",
+  "settings.craftplanet.maxSignTextRendering_tooltip": "Die maximale Entfernung der angezeigten Schildertexte",
+  "settings.craftplanet.maxBlockEntityRenderDistance_tooltip": "Die maximale Entfernung von Block-Entitäten, die gerendert werden"
+}

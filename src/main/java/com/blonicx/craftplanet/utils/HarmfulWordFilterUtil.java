@@ -1,5 +1,6 @@
 package com.blonicx.craftplanet.utils;
 
+import com.blonicx.craftplanet.CraftPlanet;
 import net.fabricmc.loader.api.FabricLoader;
 
 import java.nio.file.Files;
@@ -33,10 +34,10 @@ public class HarmfulWordFilterUtil {
                     .map(String::toLowerCase)
                     .collect(Collectors.toSet());
 
-            System.out.println("[CraftPlanet] Loaded " + harmfulWords.size() + " harmful words.");
+            CraftPlanet.LOGGER.info(CraftPlanet.MOD_ID + " Loaded " + harmfulWords.size() + " harmful words.");
 
         } catch (Exception e) {
-            System.err.println("[CraftPlanet] Failed to load harmful_words.txt");
+            System.err.println(CraftPlanet.MOD_ID + " Failed to load harmful_words.txt");
             e.printStackTrace();
         }
     }
