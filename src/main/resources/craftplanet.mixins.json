@@ -3,12 +3,13 @@
 	"package": "com.blonicx.craftplanet.mixin",
 	"compatibilityLevel": "JAVA_21",
 	"mixins": [
-		"gui.SplashTextResourceSupplierMixin",
+      "gui.SplashTextResourceSupplierMixin",
       "gui.ChatHudMixin",
 
-        "rendering.entity.AbstractSignBlockEntityRenderer",
-        "rendering.entity.ParticleRendererMixin",
-        "rendering.entity.WeatherRenderingMixin"
+      "rendering.entity.AbstractSignBlockEntityRenderer",
+      "rendering.entity.ParticleRendererMixin",
+      "rendering.entity.WeatherRenderingMixin",
+      "rendering.entity.BlockEntityRendererMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

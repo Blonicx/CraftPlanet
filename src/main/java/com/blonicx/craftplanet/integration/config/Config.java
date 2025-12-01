@@ -7,5 +7,6 @@ public class Config {
     // Performance
     public boolean maxSignTextRendering = true;
     public boolean disableWeatherRendering = true;
+    public int maxBlockEntityRenderDistance = 64;
     public int maxParticles = 5000;
 }
