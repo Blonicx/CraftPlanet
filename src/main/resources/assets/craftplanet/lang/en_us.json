@@ -12,6 +12,10 @@
   "category.craftplanet.general": "General",
   "category.craftplanet.performance": "Performance",
 
+  "settings.craftplanet.generalDescription": "General",
+  "settings.craftplanet.particlesDescription": "Particles",
+  "settings.craftplanet.renderDistancesDescription": "Render Distances",
+
   "settings.craftplanet.filterChat": "Enable Chat Filtering",
   "settings.craftplanet.disableWeatherRendering": "Disable Weather Rendering",
   "settings.craftplanet.maxParticles": "Max Amount of Particles",

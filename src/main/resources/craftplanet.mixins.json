@@ -7,10 +7,10 @@
       "gui.ChatHudMixin",
       "gui.MultiplayerServerListWidgetMixin",
 
-      "rendering.entity.AbstractSignBlockEntityRenderer",
       "rendering.particle.ParticleRendererMixin",
       "rendering.WeatherRenderingMixin",
       "rendering.entity.BlockEntityRendererMixin",
+      "rendering.entity.AbstractSignBlockEntityRenderer",
       "rendering.entity.EntityRendererMixin"
 	],
 	"injectors": {

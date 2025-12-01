@@ -29,7 +29,11 @@ public class ModConfigScreen {
         );
 
         // Performance
-        performance.addEntry(entry.startBooleanToggle(
+        var generalSub = entry.startSubCategory(
+                Text.translatable("settings.craftplanet.generalDescription")
+        );
+
+        generalSub.add(entry.startBooleanToggle(
                                 Text.translatable("settings.craftplanet.disableWeatherRendering"),
                                 ConfigManager.config.disableWeatherRendering
                         ).setDefaultValue(true)
@@ -38,18 +42,13 @@ public class ModConfigScreen {
                         .build()
         );
 
-        performance.addEntry(entry.startIntField(
-                                Text.translatable("settings.craftplanet.maxSignTextRendering"),
-                                ConfigManager.config.maxSignRenderDistance
-                        ).setDefaultValue(16)
-                        .setTooltip(Text.translatable("settings.craftplanet.maxSignTextRendering_tooltip"))
-                        .setMin(0)
-                        .setMax(64)
-                        .setSaveConsumer(newValue -> ConfigManager.config.maxSignRenderDistance = newValue)
-                        .build()
+        // Particle
+        var particlesSub = entry.startSubCategory(
+                Text.translatable("settings.craftplanet.particlesDescription")
         );
 
-        performance.addEntry(entry.startIntField(
+        particlesSub.add(
+                entry.startIntField(
                                 Text.translatable("settings.craftplanet.maxParticles"),
                                 ConfigManager.config.maxParticles
                         ).setDefaultValue(5000)
@@ -60,7 +59,23 @@ public class ModConfigScreen {
                         .build()
         );
 
-        performance.addEntry(entry.startIntField(
+        // Render Distances
+        var renderDistancesSub = entry.startSubCategory(
+                Text.translatable("settings.craftplanet.renderDistancesDescription")
+        );
+
+        renderDistancesSub.add(entry.startIntField(
+                                Text.translatable("settings.craftplanet.maxSignTextRendering"),
+                                ConfigManager.config.maxSignRenderDistance
+                        ).setDefaultValue(16)
+                        .setTooltip(Text.translatable("settings.craftplanet.maxSignTextRendering_tooltip"))
+                        .setMin(0)
+                        .setMax(64)
+                        .setSaveConsumer(newValue -> ConfigManager.config.maxSignRenderDistance = newValue)
+                        .build()
+        );
+
+        renderDistancesSub.add(entry.startIntField(
                                 Text.translatable("settings.craftplanet.maxBlockEntityRenderDistance"),
                                 ConfigManager.config.maxBlockEntityRenderDistance
                         ).setDefaultValue(64)
@@ -71,7 +86,7 @@ public class ModConfigScreen {
                         .build()
         );
 
-        performance.addEntry(entry.startIntField(
+        renderDistancesSub.add(entry.startIntField(
                                 Text.translatable("settings.craftplanet.maxEntityRenderDistance"),
                                 ConfigManager.config.maxEntityRenderDistance
                         ).setDefaultValue(64)
@@ -81,6 +96,11 @@ public class ModConfigScreen {
                         .setSaveConsumer(newValue -> ConfigManager.config.maxEntityRenderDistance = newValue)
                         .build()
         );
+
+        // Build
+        performance.addEntry(generalSub.build());
+        performance.addEntry(particlesSub.build());
+        performance.addEntry(renderDistancesSub.build());
 
         builder.setSavingRunnable(ConfigManager::save);
 
