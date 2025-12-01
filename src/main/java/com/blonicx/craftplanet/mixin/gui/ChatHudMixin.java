@@ -1,6 +1,7 @@
 package com.blonicx.craftplanet.mixin.gui;
 
 import com.blonicx.craftplanet.integration.config.ConfigManager;
+import com.blonicx.craftplanet.utils.HarmfulWordFilterUtil;
 import net.minecraft.client.gui.hud.ChatHud;
 import net.minecraft.client.gui.hud.MessageIndicator;
 import net.minecraft.network.message.MessageSignatureData;
@@ -18,8 +19,11 @@ public abstract class ChatHudMixin {
 
     @Inject(method = "addMessage(Lnet/minecraft/text/Text;Lnet/minecraft/network/message/MessageSignatureData;Lnet/minecraft/client/gui/hud/MessageIndicator;)V", at = @At("HEAD"), cancellable = true)
     void addMessage(Text message, MessageSignatureData signatureData, MessageIndicator indicator, CallbackInfo ci) {
-        //TODO: Add file parsing for multiple harmful words.
-        if (message.contains(Text.literal("")) && ConfigManager.config.filterChat) {
+        if (!ConfigManager.config.filterChat) return;
+
+        String plain = message.getString();
+
+        if (HarmfulWordFilterUtil.containsHarmfulWord(plain)) {
             this.addMessage(Text.translatable("info.craftplanet.harmful_chat_msg"));
             ci.cancel();
         }
