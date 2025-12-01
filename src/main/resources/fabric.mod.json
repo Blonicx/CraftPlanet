@@ -1,0 +1,33 @@
+{
+	"schemaVersion": 1,
+	"id": "craftplanet",
+	"version": "${version}",
+	"name": "CraftPlanet",
+	"description": "This is a client side performance and utility mod!",
+	"authors": [
+		"Blonicx"
+	],
+	"contact": {
+		"sources": "https://github.com/Blonicx/CraftPlanet"
+	},
+	"license": "MIT",
+	"icon": "assets/craftplanet/icon.png",
+	"environment": "client",
+	"entrypoints": {
+		"client": [
+			"com.blonicx.craftplanet.CraftPlanet"
+		],
+        "modmenu": [
+            "com.blonicx.craftplanet.integration.ModMenuIntegration"
+        ]
+	},
+	"mixins": [
+		"craftplanet.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.18.1",
+		"minecraft": "~1.21.10",
+		"java": ">=21",
+		"fabric-api": "*"
+	}
+}

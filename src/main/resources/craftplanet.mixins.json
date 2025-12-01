@@ -1,0 +1,18 @@
+{
+	"required": true,
+	"package": "com.blonicx.craftplanet.mixin",
+	"compatibilityLevel": "JAVA_21",
+	"mixins": [
+		"gui.SplashTextResourceSupplierMixin",
+
+        "rendering.entity.AbstractSignBlockEntityRenderer",
+        "rendering.entity.ParticleRendererMixin",
+        "rendering.entity.WeatherRenderingMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	},
+	"overwrites": {
+		"requireAnnotations": true
+	}
+}
