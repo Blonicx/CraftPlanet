@@ -17,10 +17,12 @@
   "settings.craftplanet.maxParticles": "Max Amount of Particles",
   "settings.craftplanet.maxSignTextRendering": "Sign Text Render Distance",
   "settings.craftplanet.maxBlockEntityRenderDistance": "Block Entity Render Distance",
+  "settings.craftplanet.maxEntityRenderDistance": "Entity Render Distance",
 
   "settings.craftplanet.filterChat_tooltip": "If this is enabled, the chat will not display any messages that contain harmful content",
   "settings.craftplanet.disableWeatherRendering_tooltip": "If this is enabled, all weather effects like sound or particles won't get rendered",
   "settings.craftplanet.maxParticles_tooltip": "The maximum amount of Particles that can be rendered at the same time",
   "settings.craftplanet.maxSignTextRendering_tooltip": "The maximum distance of Sign Texts that get rendered",
-  "settings.craftplanet.maxBlockEntityRenderDistance_tooltip": "The maximum distance of Block Entities that get rendered"
+  "settings.craftplanet.maxBlockEntityRenderDistance_tooltip": "The maximum distance of Block Entities that get rendered",
+  "settings.craftplanet.maxEntityRenderDistance_tooltip": "The maximum distance of Entities that get rendered"
 }

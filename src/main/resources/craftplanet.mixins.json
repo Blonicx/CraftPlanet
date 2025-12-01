@@ -5,11 +5,13 @@
 	"mixins": [
       "gui.SplashTextResourceSupplierMixin",
       "gui.ChatHudMixin",
+      "gui.MultiplayerServerListWidgetMixin",
 
       "rendering.entity.AbstractSignBlockEntityRenderer",
       "rendering.particle.ParticleRendererMixin",
       "rendering.WeatherRenderingMixin",
-      "rendering.entity.BlockEntityRendererMixin"
+      "rendering.entity.BlockEntityRendererMixin",
+      "rendering.entity.EntityRendererMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

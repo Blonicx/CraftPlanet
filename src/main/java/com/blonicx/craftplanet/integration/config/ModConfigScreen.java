@@ -71,6 +71,17 @@ public class ModConfigScreen {
                         .build()
         );
 
+        performance.addEntry(entry.startIntField(
+                                Text.translatable("settings.craftplanet.maxEntityRenderDistance"),
+                                ConfigManager.config.maxEntityRenderDistance
+                        ).setDefaultValue(64)
+                        .setTooltip(Text.translatable("settings.craftplanet.maxEntityRenderDistance_tooltip"))
+                        .setMin(0)
+                        .setMax(256)
+                        .setSaveConsumer(newValue -> ConfigManager.config.maxEntityRenderDistance = newValue)
+                        .build()
+        );
+
         builder.setSavingRunnable(ConfigManager::save);
 
         return builder.build();
