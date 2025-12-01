@@ -61,7 +61,7 @@ public class ModConfigScreen {
         performance.addEntry(entry.startIntField(
                                 Text.translatable("settings.craftplanet.maxBlockEntityRenderDistance"),
                                 ConfigManager.config.maxBlockEntityRenderDistance
-                        ).setDefaultValue(5000)
+                        ).setDefaultValue(64)
                         .setTooltip(Text.translatable("settings.craftplanet.maxBlockEntityRenderDistance_tooltip"))
                         .setMin(0)
                         .setMax(256)
