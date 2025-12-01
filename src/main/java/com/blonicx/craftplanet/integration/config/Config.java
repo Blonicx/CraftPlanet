@@ -5,8 +5,8 @@ public class Config {
     public boolean filterChat = true;
 
     // Performance
-    public boolean maxSignTextRendering = true;
     public boolean disableWeatherRendering = true;
+    public int maxSignRenderDistance = 16;
     public int maxBlockEntityRenderDistance = 64;
     public int maxParticles = 5000;
 }

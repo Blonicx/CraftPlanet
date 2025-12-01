@@ -30,20 +30,22 @@ public class ModConfigScreen {
 
         // Performance
         performance.addEntry(entry.startBooleanToggle(
-                                Text.translatable("settings.craftplanet.maxSignTextRendering"),
-                                ConfigManager.config.maxSignTextRendering
-                        ).setDefaultValue(true)
-                        .setTooltip(Text.translatable("settings.craftplanet.maxSignTextRendering_tooltip"))
-                        .setSaveConsumer(newValue -> ConfigManager.config.maxSignTextRendering = newValue)
-                        .build()
-        );
-
-        performance.addEntry(entry.startBooleanToggle(
                                 Text.translatable("settings.craftplanet.disableWeatherRendering"),
                                 ConfigManager.config.disableWeatherRendering
                         ).setDefaultValue(true)
                         .setTooltip(Text.translatable("settings.craftplanet.disableWeatherRendering_tooltip"))
                         .setSaveConsumer(newValue -> ConfigManager.config.disableWeatherRendering = newValue)
+                        .build()
+        );
+
+        performance.addEntry(entry.startIntField(
+                                Text.translatable("settings.craftplanet.maxSignTextRendering"),
+                                ConfigManager.config.maxSignRenderDistance
+                        ).setDefaultValue(16)
+                        .setTooltip(Text.translatable("settings.craftplanet.maxSignTextRendering_tooltip"))
+                        .setMin(0)
+                        .setMax(64)
+                        .setSaveConsumer(newValue -> ConfigManager.config.maxSignRenderDistance = newValue)
                         .build()
         );
 

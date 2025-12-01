@@ -18,6 +18,6 @@ public class AbstractSignBlockEntityRenderer {
         ClientPlayerEntity player = MinecraftClient.getInstance().player;
 
         assert player!=null;
-        if (!player.getBlockPos().isWithinDistance(renderState.pos, 10) && ConfigManager.config.maxSignTextRendering) ci.cancel();
+        if (!player.getBlockPos().isWithinDistance(renderState.pos, ConfigManager.config.maxSignRenderDistance)) ci.cancel();
     }
 }
