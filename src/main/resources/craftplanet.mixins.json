@@ -7,8 +7,8 @@
       "gui.ChatHudMixin",
 
       "rendering.entity.AbstractSignBlockEntityRenderer",
-      "rendering.entity.ParticleRendererMixin",
-      "rendering.entity.WeatherRenderingMixin",
+      "rendering.particle.ParticleRendererMixin",
+      "rendering.WeatherRenderingMixin",
       "rendering.entity.BlockEntityRendererMixin"
 	],
 	"injectors": {
