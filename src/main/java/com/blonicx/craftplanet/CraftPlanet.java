@@ -3,6 +3,7 @@ package com.blonicx.craftplanet;
 import com.blonicx.craftplanet.event.KeyInputEvents;
 import com.blonicx.craftplanet.event.TooltipEvents;
 import com.blonicx.craftplanet.integration.config.ConfigManager;
+import com.blonicx.craftplanet.resources.Cache;
 import com.blonicx.craftplanet.utils.HarmfulWordFilterUtil;
 import net.fabricmc.api.ClientModInitializer;
 
@@ -22,6 +23,7 @@ public class CraftPlanet implements ClientModInitializer {
 
         // Load Data
         ConfigManager.load(FabricLoader.getInstance().getConfigDir().toFile());
+        Cache.load();
         HarmfulWordFilterUtil.load();
 
         LOGGER.info("CraftPlanet initialized!");

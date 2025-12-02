@@ -1,5 +1,7 @@
 package com.blonicx.craftplanet.integration.config;
 
+import com.blonicx.craftplanet.resources.ImagePipeline;
+
 public class Config {
     // General
     public boolean filterChat = true;
@@ -8,6 +10,7 @@ public class Config {
 
     // General
     public boolean disableWeatherRendering = true;
+    public ImagePipeline imagePipeline = ImagePipeline.DEFAULT;
 
     // Particle
     public int maxParticles = 5000;
