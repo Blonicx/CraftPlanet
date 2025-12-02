@@ -3,9 +3,9 @@
 	"package": "com.blonicx.craftplanet.mixin",
 	"compatibilityLevel": "JAVA_21",
 	"mixins": [
-      "gui.SplashTextResourceSupplierMixin",
-      "gui.ChatHudMixin",
-      "gui.MultiplayerServerListWidgetMixin",
+      "gui.components.SplashTextResourceSupplierMixin",
+      "gui.chat.ChatHudMixin",
+      "gui.components.MultiplayerServerListWidgetMixin",
 
       "rendering.particle.ParticleRendererMixin",
       "rendering.WeatherRenderingMixin",

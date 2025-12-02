@@ -1,4 +1,4 @@
-package com.blonicx.craftplanet.mixin.gui;
+package com.blonicx.craftplanet.mixin.gui.components;
 
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import net.minecraft.client.gui.screen.multiplayer.MultiplayerServerListWidget;

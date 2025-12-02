@@ -1,4 +1,4 @@
-package com.blonicx.craftplanet.mixin.gui;
+package com.blonicx.craftplanet.mixin.gui.chat;
 
 import com.blonicx.craftplanet.integration.config.ConfigManager;
 import com.blonicx.craftplanet.utils.HarmfulWordFilterUtil;

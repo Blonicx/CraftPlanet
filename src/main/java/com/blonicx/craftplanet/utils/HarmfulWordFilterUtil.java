@@ -24,7 +24,7 @@ public class HarmfulWordFilterUtil {
 
             if (!Files.exists(FILE)) {
                 Files.write(FILE, List.of(
-                        "Delete this Line and add Custom Words:"
+                        "Add Custom Words:"
                 ));
             }
 
@@ -34,7 +34,9 @@ public class HarmfulWordFilterUtil {
                     .map(String::toLowerCase)
                     .collect(Collectors.toSet());
 
-            CraftPlanet.LOGGER.info(CraftPlanet.MOD_ID + " Loaded " + harmfulWords.size() + " harmful words.");
+            int length = harmfulWords.size() - 1;
+
+            CraftPlanet.LOGGER.info(CraftPlanet.MOD_ID + " Loaded {} harmful words.", length);
 
         } catch (Exception e) {
             System.err.println(CraftPlanet.MOD_ID + " Failed to load harmful_words.txt");

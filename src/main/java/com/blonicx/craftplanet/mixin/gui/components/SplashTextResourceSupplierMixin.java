@@ -1,4 +1,4 @@
-package com.blonicx.craftplanet.mixin.gui;
+package com.blonicx.craftplanet.mixin.gui.components;
 
 import net.minecraft.client.resource.SplashTextResourceSupplier;
 import net.minecraft.resource.ResourceManager;
