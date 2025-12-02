@@ -33,6 +33,9 @@ public class FastZipResourcePack extends AbstractFileResourcePack {
     private final List<String> prefixStack;
     private final Set<String> overlays;
 
+    /**
+     * Constructor.
+     */
     public FastZipResourcePack(ResourcePackInfo info, ZipFile zipFile, List<String> overlays) {
         super(info);
         this.zipFile = zipFile;
@@ -45,7 +48,7 @@ public class FastZipResourcePack extends AbstractFileResourcePack {
         }
         prefixStack.add("");
 
-        indexZip(); // <= does NOT extract any file data
+        indexZip(); // <= does NOT extract any file data, only builds a directory index
     }
 
     /**
@@ -95,11 +98,9 @@ public class FastZipResourcePack extends AbstractFileResourcePack {
      * Lazy-load file: first lookup loads, later lookups hit RAM cache.
      */
     private byte @Nullable [] loadFile(String path) {
-        // 1) Check MRU cache
         byte[] cached = cache.get(path);
         if (cached != null) return cached;
 
-        // 2) Check ZIP index
         ZipEntry entry = entries.get(path);
         if (entry == null) return null;
 
@@ -112,8 +113,6 @@ public class FastZipResourcePack extends AbstractFileResourcePack {
             return null;
         }
     }
-
-    // ---------- API Methods ----------
 
     @Override
     public @Nullable InputSupplier<InputStream> openRoot(String... segments) {
