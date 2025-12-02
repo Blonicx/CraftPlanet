@@ -9,8 +9,12 @@
 
   "title.craftplanet.config": "CraftPlanet",
 
-  "category.craftplanet.general": "Generell",
+  "category.craftplanet.general": "Allgemein",
   "category.craftplanet.performance": "Leistung",
+
+  "settings.craftplanet.generalDescription": "Allgemein",
+  "settings.craftplanet.particlesDescription": "Partikel",
+  "settings.craftplanet.renderDistancesDescription": "Render Entfernung",
 
   "settings.craftplanet.filterChat": "Chat Filterung aktiviren",
   "settings.craftplanet.disableWeatherRendering": "Wetter Rendering deaktiviren",
