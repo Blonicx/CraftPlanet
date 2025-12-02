@@ -1,6 +1,7 @@
 package com.blonicx.craftplanet;
 
 import com.blonicx.craftplanet.event.KeyInputEvents;
+import com.blonicx.craftplanet.event.TooltipEvents;
 import com.blonicx.craftplanet.integration.config.ConfigManager;
 import com.blonicx.craftplanet.utils.HarmfulWordFilterUtil;
 import net.fabricmc.api.ClientModInitializer;
@@ -17,6 +18,7 @@ public class CraftPlanet implements ClientModInitializer {
     public void onInitializeClient() {
         // Register
         KeyInputEvents.register();
+        TooltipEvents.register();
 
         // Load Data
         ConfigManager.load(FabricLoader.getInstance().getConfigDir().toFile());

@@ -17,7 +17,7 @@ public class KeyInputEvents {
     // Keybinds
     private static KeyBinding copyCoordsKey;
 
-    private static void registerKeyInputs(){
+    static void registerKeyInputs(){
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             if (copyCoordsKey.wasPressed()) {
                 assert client.player != null;
@@ -39,6 +39,6 @@ public class KeyInputEvents {
 
         registerKeyInputs();
 
-        CraftPlanet.LOGGER.info("Registered KeyEvents for " + CraftPlanet.MOD_ID);
+        CraftPlanet.LOGGER.info("Registered KeyEvents for {}", CraftPlanet.MOD_ID);
     }
 }
