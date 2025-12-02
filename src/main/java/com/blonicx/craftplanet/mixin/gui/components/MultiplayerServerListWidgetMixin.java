@@ -13,6 +13,9 @@ import java.util.concurrent.ThreadPoolExecutor;
 
 // Credits: https://github.com/JustAlittleWolf/ServerPingerFixer/tree/main
 
+/**
+ * @author JustAlittleWolf
+ */
 @Mixin(MultiplayerServerListWidget.class)
 public class MultiplayerServerListWidgetMixin {
     @Mutable
