@@ -8,18 +8,19 @@
 		"Blonicx"
 	],
 	"contact": {
-		"sources": "https://github.com/Blonicx/CraftPlanet"
+      "homepage": "https://modrinth.com/mod/craftplanet",
+      "sources": "https://github.com/Blonicx/CraftPlanet"
 	},
 	"license": "MIT",
 	"icon": "assets/craftplanet/icon.png",
 	"environment": "client",
 	"entrypoints": {
-		"client": [
-			"com.blonicx.craftplanet.CraftPlanet"
-		],
-        "modmenu": [
-            "com.blonicx.craftplanet.integration.ModMenuIntegration"
-        ]
+      "client": [
+	    "com.blonicx.craftplanet.CraftPlanet"
+      ],
+      "modmenu": [
+        "com.blonicx.craftplanet.integration.ModMenuIntegration"
+      ]
 	},
 	"mixins": [
 		"craftplanet.mixins.json"
