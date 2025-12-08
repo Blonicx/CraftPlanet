@@ -10,10 +10,12 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(Window.class)
 public class WindowMixin {
-    @Unique final int FPS = MinecraftClient.getInstance().options.getMaxFps().getValue();
+    @Unique int FPS = MinecraftClient.getInstance().options.getMaxFps().getValue();
 
     @Inject(method = "onWindowFocusChanged", at = @At("HEAD"))
     void onWindowFocusChanged(long window, boolean focused, CallbackInfo ci) {
+        if (!focused) FPS = MinecraftClient.getInstance().options.getMaxFps().getValue();
+
         MinecraftClient.getInstance().options.getMaxFps().setValue(focused ? FPS : 15);
     }
 }
