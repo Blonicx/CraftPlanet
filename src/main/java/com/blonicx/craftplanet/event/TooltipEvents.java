@@ -23,6 +23,6 @@ public class TooltipEvents {
     public static void register(){
         registerTooltips();
 
-        CraftPlanet.LOGGER.info("Registered KeyEvents for {}", CraftPlanet.MOD_ID);
+        CraftPlanet.LOGGER.info("Registered TooltipEvents for {}", CraftPlanet.MOD_ID);
     }
 }
