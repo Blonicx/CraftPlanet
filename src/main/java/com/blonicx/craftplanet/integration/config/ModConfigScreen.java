@@ -28,6 +28,11 @@ public class ModConfigScreen {
                         .build()
         );
 
+        general.addEntry(
+                entry.startTextDescription(Text.translatable("info.craftplanet.add_words")
+                ).build()
+        );
+
         // Performance
         var generalSub = entry.startSubCategory(
                 Text.translatable("settings.craftplanet.generalDescription")

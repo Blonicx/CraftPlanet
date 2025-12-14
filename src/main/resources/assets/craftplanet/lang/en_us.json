@@ -7,6 +7,7 @@
 
   "info.craftplanet.harmful_chat_msg":  "Harmful Message!",
   "info.craftplanet.durability": "Durability",
+  "info.craftplanet.add_words": "To add words, go to you mod folder, then config/craftplanet and go into the harmful_words.txt file. Each line represents a custom blocked Word!",
 
   "title.craftplanet.config": "CraftPlanet",
 
