@@ -1,4 +1,4 @@
-package com.blonicx.craftplanet.mixin.rendering.entity;
+package com.blonicx.craftplanet.mixin.rendering.entity.block;
 
 import com.blonicx.craftplanet.integration.config.ConfigManager;
 import net.minecraft.client.MinecraftClient;
