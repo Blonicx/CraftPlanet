@@ -7,8 +7,9 @@
 
       "resources.ZipBackedFactoryMixin",
 
-      "gui.components.SplashTextResourceSupplierMixin",
+      "gui.TitleScreenMixin",
       "gui.chat.ChatHudMixin",
+      "gui.components.SplashTextResourceSupplierMixin",
       "gui.components.MultiplayerServerListWidgetMixin",
 
       "rendering.particle.ParticleRendererMixin",
