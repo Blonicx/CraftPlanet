@@ -15,7 +15,7 @@ public class ConfigManager {
 
     public static void load(File configDir) {
         try {
-            file = new File(configDir, "saturn.json");
+            file = new File(configDir, "craftplanet.json");
 
             if (file.exists()) {
                 config = GSON.fromJson(new FileReader(file), Config.class);
