@@ -24,7 +24,7 @@ public class WeatherRenderingMixin {
     }
 
     @Inject(method = "addParticlesAndSound", at = @At("HEAD"), cancellable = true)
-    void addParticlesAndSound(ClientWorld world, Camera camera, int ticks, ParticlesMode particlesMode, CallbackInfo ci) {
+    void addParticlesAndSound(ClientWorld world, Camera camera, int ticks, ParticlesMode particlesMode, int weatherRadius, CallbackInfo ci) {
         if (ConfigManager.config.disableWeatherRendering) {
             ci.cancel();
         }

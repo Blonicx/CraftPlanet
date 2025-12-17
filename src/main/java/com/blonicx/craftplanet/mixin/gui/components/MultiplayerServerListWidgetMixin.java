@@ -18,9 +18,7 @@ import java.util.concurrent.ThreadPoolExecutor;
  */
 @Mixin(MultiplayerServerListWidget.class)
 public class MultiplayerServerListWidgetMixin {
-    @Mutable
-    @Final
-    @Shadow
+    @Mutable @Final @Shadow
     static ThreadPoolExecutor SERVER_PINGER_THREAD_POOL;
 
     @Unique

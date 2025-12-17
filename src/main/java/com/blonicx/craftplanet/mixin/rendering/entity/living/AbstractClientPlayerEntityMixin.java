@@ -24,8 +24,7 @@ import java.util.Objects;
 
 @Mixin(AbstractClientPlayerEntity.class)
 public abstract class AbstractClientPlayerEntityMixin {
-    @Shadow
-    @Nullable
+    @Shadow @Nullable
     protected abstract PlayerListEntry getPlayerListEntry();
 
     @Inject(method = "<init>", at = @At("HEAD"))

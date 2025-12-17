@@ -17,8 +17,7 @@ import java.util.zip.ZipFile;
 
 @Mixin(ZipResourcePack.ZipBackedFactory.class)
 public class ZipBackedFactoryMixin {
-    @Shadow
-    @Final
+    @Shadow @Final
     private File file;
 
     /**
