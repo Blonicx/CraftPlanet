@@ -16,4 +16,7 @@ public class Config {
     public int maxSignRenderDistance = 16;
     public int maxEntityRenderDistance = 64;
     public int maxBlockEntityRenderDistance = 64;
+
+    // Cape
+    public String cape_name = "";
 }

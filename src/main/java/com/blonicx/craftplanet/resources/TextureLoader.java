@@ -1,6 +1,7 @@
 package com.blonicx.craftplanet.resources;
 
 import com.blonicx.craftplanet.CraftPlanet;
+import com.blonicx.craftplanet.integration.config.ConfigManager;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.texture.NativeImage;
@@ -19,6 +20,11 @@ public class TextureLoader {
     public static Identifier CAPE_TEXTURE;
 
     public static Identifier loadTextureFromFile(File file, String textureName) {
+        if (!file.exists()) {
+            ConfigManager.config.cape_name = "";
+            return null;
+        }
+
         try (FileInputStream stream = new FileInputStream(file)) {
             NativeImage image = NativeImage.read(stream);
             NativeImageBackedTexture texture = new NativeImageBackedTexture(() -> CraftPlanet.MOD_ID + "/cache/" + textureName, image);
@@ -28,7 +34,7 @@ public class TextureLoader {
             TextureManager textureManager = MinecraftClient.getInstance().getTextureManager();
             textureManager.registerTexture(id, texture);
 
-            //storeFile(file);
+            storeFile(file);
 
             return id;
         } catch (IOException e) {
@@ -39,10 +45,17 @@ public class TextureLoader {
     static void storeFile(File file) {
         try {
             Path original = file.toPath();
-            Path copied = new File(FabricLoader.getInstance().getConfigDir().toFile(), "craftplanet/cache/" + original).toPath();
+            File destFile = new File(FabricLoader.getInstance().getConfigDir().toFile(), "craftplanet/cache/" + original.getFileName());
+            Path copied = destFile.toPath();
+
+            Files.createDirectories(copied.getParent());
+
             Files.copy(original, copied, StandardCopyOption.REPLACE_EXISTING);
+
+            ConfigManager.config.cape_name = destFile.getName();
+            ConfigManager.save();
         } catch (IOException e) {
-            CraftPlanet.LOGGER.error(e.getMessage());
+            e.printStackTrace();
         }
     }
 }
