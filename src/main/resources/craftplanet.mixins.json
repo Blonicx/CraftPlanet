@@ -7,15 +7,16 @@
 
       "resources.ZipBackedFactoryMixin",
 
+      "gui.components.MultiplayerServerListWidgetMixin",
       "gui.components.SplashTextResourceSupplierMixin",
       "gui.chat.ChatHudMixin",
-      "gui.components.MultiplayerServerListWidgetMixin",
 
-      "rendering.particle.ParticleRendererMixin",
       "rendering.WeatherRenderingMixin",
-      "rendering.entity.BlockEntityRendererMixin",
-      "rendering.entity.AbstractSignBlockEntityRenderer",
-      "rendering.entity.EntityRendererMixin"
+      "rendering.particle.ParticleRendererMixin",
+      "rendering.entity.EntityRendererMixin",
+      "rendering.entity.living.AbstractClientPlayerEntityMixin",
+      "rendering.entity.block.BlockEntityRendererMixin",
+      "rendering.entity.block.AbstractSignBlockEntityRenderer"
 	],
 	"injectors": {
 		"defaultRequire": 1
