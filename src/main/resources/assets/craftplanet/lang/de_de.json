@@ -5,6 +5,8 @@
 
   "key.category.craftplanet.keybinds_category": "CraftPlanet",
 
+  "button.craftplanet.choose_cape": "Cape laden",
+
   "info.craftplanet.harmful_chat_msg":  "Böse Nachricht!",
   "info.craftplanet.durability": "Haltbarkeit",
   "info.craftplanet.add_words": "Um Wörter hinzuzufügen, gehen Sie zu Ihrem Mod-Ordner, dann zu config/craftplanet und öffnen Sie die Datei harmful_words.txt. Jede Zeile steht für ein blockiertes Wort!",

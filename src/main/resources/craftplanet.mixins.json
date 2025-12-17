@@ -10,6 +10,7 @@
       "gui.components.MultiplayerServerListWidgetMixin",
       "gui.components.SplashTextResourceSupplierMixin",
       "gui.chat.ChatHudMixin",
+      "gui.screen.SkinOptionsScreenMixin",
 
       "rendering.WeatherRenderingMixin",
       "rendering.particle.ParticleRendererMixin",
