@@ -1,28 +1,30 @@
 {
-	"required": true,
-	"package": "com.blonicx.craftplanet.mixin",
-	"compatibilityLevel": "JAVA_21",
-	"mixins": [
-      "WindowMixin",
+  "required": true,
+  "package": "com.blonicx.craftplanet.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "WindowMixin",
 
-      "resources.ZipBackedFactoryMixin",
+    "gui.chat.ChatHudMixin",
+    "gui.screen.SkinOptionsScreenMixin",
+    "gui.components.MultiplayerServerListWidgetMixin",
+    "gui.components.SplashTextResourceSupplierMixin",
 
-      "gui.components.MultiplayerServerListWidgetMixin",
-      "gui.components.SplashTextResourceSupplierMixin",
-      "gui.chat.ChatHudMixin",
-      "gui.screen.SkinOptionsScreenMixin",
+    "rendering.WeatherRenderingMixin",
+    "rendering.particle.ParticleRendererMixin",
+    "rendering.entity.EntityRendererMixin",
+    "rendering.entity.EntityMixin",
+    "rendering.entity.living.LivingEntityMixin",
+    "rendering.entity.living.AbstractClientPlayerEntityMixin",
+    "rendering.entity.block.AbstractSignBlockEntityRenderer",
+    "rendering.entity.block.BlockEntityRendererMixin",
 
-      "rendering.WeatherRenderingMixin",
-      "rendering.particle.ParticleRendererMixin",
-      "rendering.entity.EntityRendererMixin",
-      "rendering.entity.living.AbstractClientPlayerEntityMixin",
-      "rendering.entity.block.BlockEntityRendererMixin",
-      "rendering.entity.block.AbstractSignBlockEntityRenderer"
-	],
-	"injectors": {
-		"defaultRequire": 1
-	},
-	"overwrites": {
-		"requireAnnotations": true
-	}
+    "resources.ZipBackedFactoryMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "overwrites": {
+    "requireAnnotations": true
+  }
 }
