@@ -6,6 +6,8 @@
   "key.category.craftplanet.keybinds_category": "CraftPlanet",
 
   "button.craftplanet.choose_cape": "Load a Cape",
+  "button.craftplanet.skin_editor": "Skin Editor",
+  "screen.craftplanet.skin_editor": "Skin Editor",
 
   "info.craftplanet.harmful_chat_msg":  "Harmful Message!",
   "info.craftplanet.durability": "Durability",
