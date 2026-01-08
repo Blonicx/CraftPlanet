@@ -1,4 +1,4 @@
-package com.blonicx.craftplanet.resources;
+package com.blonicx.craftplanet.rendering;
 
 import net.minecraft.util.AssetInfo;
 import net.minecraft.util.Identifier;

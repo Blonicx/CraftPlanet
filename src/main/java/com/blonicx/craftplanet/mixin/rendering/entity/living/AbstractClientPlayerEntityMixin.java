@@ -1,8 +1,8 @@
 package com.blonicx.craftplanet.mixin.rendering.entity.living;
 
 import com.blonicx.craftplanet.integration.config.ConfigManager;
-import com.blonicx.craftplanet.resources.Cape;
-import com.blonicx.craftplanet.resources.TextureLoader;
+import com.blonicx.craftplanet.rendering.Cape;
+import com.blonicx.craftplanet.rendering.TextureLoader;
 import com.mojang.authlib.GameProfile;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.MinecraftClient;

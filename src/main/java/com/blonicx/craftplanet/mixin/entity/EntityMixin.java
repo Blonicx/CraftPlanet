@@ -1,4 +1,4 @@
-package com.blonicx.craftplanet.mixin.rendering.entity;
+package com.blonicx.craftplanet.mixin.entity;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.world.World;
