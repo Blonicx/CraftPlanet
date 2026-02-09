@@ -1,8 +1,8 @@
-package com.blonicx.craftplanet.resources;
+package com.blonicx.craftplanet.rendering;
 
 import com.blonicx.craftplanet.CraftPlanet;
 import com.blonicx.craftplanet.integration.config.ConfigManager;
-import net.fabricmc.loader.api.FabricLoader;
+import com.blonicx.craftplanet.resources.Cache;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.texture.NativeImage;
 import net.minecraft.client.texture.NativeImageBackedTexture;
@@ -45,7 +45,7 @@ public class TextureLoader {
     static void storeFile(File file) {
         try {
             Path original = file.toPath();
-            File destFile = new File(FabricLoader.getInstance().getConfigDir().toFile(), "craftplanet/cache/" + original.getFileName());
+            File destFile = new File(Cache.CACHE_DIR + original.getFileName());
             Path copied = destFile.toPath();
 
             Files.createDirectories(copied.getParent());

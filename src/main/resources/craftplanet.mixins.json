@@ -12,6 +12,7 @@
 
     "rendering.WeatherRenderingMixin",
     "rendering.particle.ParticleRendererMixin",
+    "rendering.features.ArmorFeatureRendererMixin",
     "rendering.entity.EntityRendererMixin",
     "entity.EntityMixin",
     "entity.LivingEntityMixin",

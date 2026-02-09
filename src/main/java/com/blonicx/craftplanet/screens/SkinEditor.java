@@ -1,6 +1,6 @@
 package com.blonicx.craftplanet.screens;
 
-import com.blonicx.craftplanet.resources.TextureLoader;
+import com.blonicx.craftplanet.rendering.TextureLoader;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.Screen;
