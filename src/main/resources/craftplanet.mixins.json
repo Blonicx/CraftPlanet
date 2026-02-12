@@ -17,7 +17,8 @@
     "entity.EntityMixin",
     "entity.LivingEntityMixin",
     "rendering.entity.living.AbstractClientPlayerEntityMixin",
-    "rendering.entity.block.AbstractSignBlockEntityRenderer",
+    "rendering.entity.block.AbstractSignBlockEntityRendererMixin",
+    "rendering.entity.block.ItemFrameEntityRendererMixin",
     "rendering.entity.block.BlockEntityRendererMixin",
 
     "resources.ZipBackedFactoryMixin"

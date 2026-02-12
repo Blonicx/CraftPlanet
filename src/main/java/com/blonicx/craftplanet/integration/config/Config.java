@@ -15,6 +15,7 @@ public class Config {
 
     // Render Distance
     public int maxSignRenderDistance = 16;
+    public int maxItemFrameRenderDistance = 16;
     public int maxEntityRenderDistance = 64;
     public int maxBlockEntityRenderDistance = 64;
 
