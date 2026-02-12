@@ -7,6 +7,7 @@
 
   "button.craftplanet.choose_cape": "Load a Cape",
   "button.craftplanet.skin_editor": "Skin Editor",
+
   "screen.craftplanet.skin_editor": "Skin Editor",
 
   "info.craftplanet.harmful_chat_msg":  "Harmful Message!",
@@ -23,16 +24,20 @@
   "settings.craftplanet.renderDistancesDescription": "Render Distances",
 
   "settings.craftplanet.filterChat": "Enable Chat Filtering",
+  "settings.craftplanet.disableArmorRendering": "Disable Armor Rendering",
   "settings.craftplanet.disableWeatherRendering": "Disable Weather Rendering",
   "settings.craftplanet.maxParticles": "Max Amount of Particles",
   "settings.craftplanet.maxSignTextRendering": "Sign Text Render Distance",
+  "settings.craftplanet.maxItemFrameRendering": "Item Frame Render Distance",
   "settings.craftplanet.maxBlockEntityRenderDistance": "Block Entity Render Distance",
   "settings.craftplanet.maxEntityRenderDistance": "Entity Render Distance",
 
   "settings.craftplanet.filterChat_tooltip": "If this is enabled, the chat will not display any messages that contain harmful content",
+  "settings.craftplanet.disableArmorRendering_tooltip": "If this is enabled, the armors will not be rendered",
   "settings.craftplanet.disableWeatherRendering_tooltip": "If this is enabled, all weather effects like sound or particles won't get rendered",
   "settings.craftplanet.maxParticles_tooltip": "The maximum amount of Particles that can be rendered at the same time",
   "settings.craftplanet.maxSignTextRendering_tooltip": "The maximum distance of Sign Texts that get rendered",
+  "settings.craftplanet.maxItemFrameRendering_tooltip": "The maximum distance of Item Frames that get rendered",
   "settings.craftplanet.maxBlockEntityRenderDistance_tooltip": "The maximum distance of Block Entities that get rendered",
   "settings.craftplanet.maxEntityRenderDistance_tooltip": "The maximum distance of Entities that get rendered"
 }

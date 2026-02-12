@@ -20,6 +20,15 @@ public class ModConfigScreen {
 
         // General
         general.addEntry(entry.startBooleanToggle(
+                                Text.translatable("settings.craftplanet.disableArmorRendering"),
+                                ConfigManager.config.disableArmorRendering
+                        ).setDefaultValue(true)
+                        .setTooltip(Text.translatable("settings.craftplanet.disableArmorRendering_tooltip"))
+                        .setSaveConsumer(newValue -> ConfigManager.config.disableWeatherRendering = newValue)
+                        .build()
+        );
+
+        general.addEntry(entry.startBooleanToggle(
                                 Text.translatable("settings.craftplanet.filterChat"),
                                 ConfigManager.config.filterChat
                         ).setDefaultValue(true)
@@ -77,6 +86,17 @@ public class ModConfigScreen {
                         .setMin(0)
                         .setMax(64)
                         .setSaveConsumer(newValue -> ConfigManager.config.maxSignRenderDistance = newValue)
+                        .build()
+        );
+
+        renderDistancesSub.add(entry.startIntField(
+                                Text.translatable("settings.craftplanet.maxItemFrameRendering"),
+                                ConfigManager.config.maxItemFrameRenderDistance
+                        ).setDefaultValue(16)
+                        .setTooltip(Text.translatable("settings.craftplanet.maxItemFrameRendering_tooltip"))
+                        .setMin(0)
+                        .setMax(64)
+                        .setSaveConsumer(newValue -> ConfigManager.config.maxItemFrameRenderDistance = newValue)
                         .build()
         );
 

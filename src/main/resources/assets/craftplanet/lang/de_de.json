@@ -6,6 +6,9 @@
   "key.category.craftplanet.keybinds_category": "CraftPlanet",
 
   "button.craftplanet.choose_cape": "Cape laden",
+  "button.craftplanet.skin_editor": "Skin Editor",
+
+  "screen.craftplanet.skin_editor": "Skin Editor",
 
   "info.craftplanet.harmful_chat_msg":  "Böse Nachricht!",
   "info.craftplanet.durability": "Haltbarkeit",
@@ -21,16 +24,20 @@
   "settings.craftplanet.renderDistancesDescription": "Render Entfernung",
 
   "settings.craftplanet.filterChat": "Chat Filterung aktiviren",
+  "settings.craftplanet.disableArmorRendering": "Rüstungs Rendering deaktiviren",
   "settings.craftplanet.disableWeatherRendering": "Wetter Rendering deaktiviren",
   "settings.craftplanet.maxParticles": "Maximale anzahl an Partikel",
   "settings.craftplanet.maxSignTextRendering": "Schild Text Render Entfernung",
+  "settings.craftplanet.maxItemFrameRendering": "Gegenstandsrahmen Render Entfernung",
   "settings.craftplanet.maxBlockEntityRenderDistance": "Block Entity Render Entfernung",
   "settings.craftplanet.maxEntityRenderDistance": "Entity Render Entfernung",
 
   "settings.craftplanet.filterChat_tooltip": "Wenn diese Option aktiviert ist, werden im Chat keine Nachrichten mit schädlichen Inhalten angezeigt.",
+  "settings.craftplanet.disableArmorRendering_tooltip": "Wenn diese Option aktiviert ist, wird Rüstung nicht mehr gerendert.",
   "settings.craftplanet.disableWeatherRendering_tooltip": "Wenn diese Option aktiviert ist, werden alle Wettereffekte wie Geräusche oder Partikel nicht gerendert.",
-  "settings.craftplanet.maxParticles_tooltip": "Die maximale Anzahl an Partikeln, die gleichzeitig gerendert werden können",
-  "settings.craftplanet.maxSignTextRendering_tooltip": "Die maximale Entfernung der angezeigten Schildertexte",
-  "settings.craftplanet.maxBlockEntityRenderDistance_tooltip": "Die maximale Entfernung von Block-Entitäten, die gerendert werden",
-  "settings.craftplanet.maxEntityRenderDistance_tooltip": "Die maximale Entfernung von Entitäten, die gerendert werden"
+  "settings.craftplanet.maxParticles_tooltip": "Die maximale Anzahl an Partikeln, die gleichzeitig gerendert werden können.",
+  "settings.craftplanet.maxSignTextRendering_tooltip": "Die maximale Entfernung der angezeigten Schildertexte.",
+  "settings.craftplanet.maxItemFrameRendering_tooltip": "Die maximale Entfernung der angezeigten Gegenstandsrahmen.",
+  "settings.craftplanet.maxBlockEntityRenderDistance_tooltip": "Die maximale Entfernung von Block-Entitäten, die gerendert werden.",
+  "settings.craftplanet.maxEntityRenderDistance_tooltip": "Die maximale Entfernung von Entitäten, die gerendert werden."
 }
