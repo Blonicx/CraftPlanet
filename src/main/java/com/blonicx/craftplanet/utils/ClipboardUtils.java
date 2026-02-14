@@ -1,13 +1,13 @@
 package com.blonicx.craftplanet.utils;
 
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.util.Clipboard;
+import com.mojang.blaze3d.platform.ClipboardManager;
+import net.minecraft.client.Minecraft;
 
 public class ClipboardUtils {
     public static void copyToClipboard(String string){
-        MinecraftClient client = MinecraftClient.getInstance();
+        Minecraft client = Minecraft.getInstance();
 
-        Clipboard clipboard = new Clipboard();
-        clipboard.set(client.getWindow(), string);
+        ClipboardManager clipboard = new ClipboardManager();
+        clipboard.setClipboard(client.getWindow(), string);
     }
 }

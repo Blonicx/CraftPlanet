@@ -1,30 +1,30 @@
 package com.blonicx.craftplanet.mixin.rendering;
 
 import com.blonicx.craftplanet.integration.config.ConfigManager;
-import net.minecraft.client.render.Camera;
-import net.minecraft.client.render.VertexConsumer;
-import net.minecraft.client.render.WeatherRendering;
-import net.minecraft.client.world.ClientWorld;
-import net.minecraft.particle.ParticlesMode;
-import net.minecraft.util.math.Vec3d;
+import com.mojang.blaze3d.vertex.VertexConsumer;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.List;
+import net.minecraft.client.Camera;
+import net.minecraft.client.multiplayer.ClientLevel;
+import net.minecraft.client.renderer.WeatherEffectRenderer;
+import net.minecraft.server.level.ParticleStatus;
+import net.minecraft.world.phys.Vec3;
 
-@Mixin(WeatherRendering.class)
+@Mixin(WeatherEffectRenderer.class)
 public class WeatherRenderingMixin {
-    @Inject(method = "renderPieces", at = @At("HEAD"), cancellable = true)
-    void renderPieces(VertexConsumer vertexConsumer, List<WeatherRendering.Piece> pieces, Vec3d pos, float intensity, int range, float gradient, CallbackInfo ci) {
+    @Inject(method = "renderInstances", at = @At("HEAD"), cancellable = true)
+    void renderPieces(VertexConsumer vertexConsumer, List<WeatherEffectRenderer.ColumnInstance> pieces, Vec3 pos, float intensity, int range, float gradient, CallbackInfo ci) {
         if (ConfigManager.config.disableWeatherRendering) {
             ci.cancel();
         }
     }
 
-    @Inject(method = "addParticlesAndSound", at = @At("HEAD"), cancellable = true)
-    void addParticlesAndSound(ClientWorld world, Camera camera, int ticks, ParticlesMode particlesMode, int weatherRadius, CallbackInfo ci) {
+    @Inject(method = "tickRainParticles", at = @At("HEAD"), cancellable = true)
+    void addParticlesAndSound(ClientLevel world, Camera camera, int ticks, ParticleStatus particlesMode, int weatherRadius, CallbackInfo ci) {
         if (ConfigManager.config.disableWeatherRendering) {
             ci.cancel();
         }

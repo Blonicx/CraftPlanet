@@ -1,7 +1,7 @@
 package com.blonicx.craftplanet.mixin;
 
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.util.Window;
+import com.mojang.blaze3d.platform.Window;
+import net.minecraft.client.Minecraft;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
@@ -10,12 +10,12 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(Window.class)
 public class WindowMixin {
-    @Unique int FPS = MinecraftClient.getInstance().options.getMaxFps().getValue();
+    @Unique int FPS = Minecraft.getInstance().options.framerateLimit().get();
 
-    @Inject(method = "onWindowFocusChanged", at = @At("HEAD"))
+    @Inject(method = "onFocus", at = @At("HEAD"))
     void onWindowFocusChanged(long window, boolean focused, CallbackInfo ci) {
-        if (!focused) FPS = MinecraftClient.getInstance().options.getMaxFps().getValue();
+        if (!focused) FPS = Minecraft.getInstance().options.framerateLimit().get();
 
-        MinecraftClient.getInstance().options.getMaxFps().setValue(focused ? FPS : 15);
+        Minecraft.getInstance().options.framerateLimit().set(focused ? FPS : 15);
     }
 }

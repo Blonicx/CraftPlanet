@@ -2,7 +2,10 @@ package com.blonicx.craftplanet.mixin.resources;
 
 import com.blonicx.craftplanet.CraftPlanet;
 import com.blonicx.craftplanet.resources.FastZipResourcePack;
-import net.minecraft.resource.*;
+import net.minecraft.server.packs.FilePackResources;
+import net.minecraft.server.packs.PackLocationInfo;
+import net.minecraft.server.packs.PackResources;
+import net.minecraft.server.packs.repository.Pack;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
@@ -15,23 +18,23 @@ import java.util.zip.ZipFile;
 
 // Credits: https://github.com/DrexHD/quick-pack/tree/main
 
-@Mixin(ZipResourcePack.ZipBackedFactory.class)
+@Mixin(FilePackResources.FileResourcesSupplier.class)
 public class ZipBackedFactoryMixin {
     @Shadow @Final
-    private File file;
+    private File content;
 
     /**
      * @author Blonicx / drex
      * @reason Use optimized FastZipResourcePack
      */
     @Overwrite
-    public ResourcePack openWithOverlays(ResourcePackInfo info, ResourcePackProfile.Metadata metadata) {
+    public PackResources openFull(PackLocationInfo info, Pack.Metadata metadata) {
         ZipFile zipFile = null;
 
         try {
-            zipFile = new ZipFile(this.file);
+            zipFile = new ZipFile(this.content);
         } catch (IOException e) {
-            CraftPlanet.LOGGER.error("Failed to open pack {}", this.file, e);
+            CraftPlanet.LOGGER.error("Failed to open pack {}", this.content, e);
         }
 
         List<String> overlays = metadata.overlays();

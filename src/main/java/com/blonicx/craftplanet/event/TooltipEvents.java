@@ -2,20 +2,20 @@ package com.blonicx.craftplanet.event;
 
 import com.blonicx.craftplanet.CraftPlanet;
 import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
-import net.minecraft.text.Text;
-import net.minecraft.util.Formatting;
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.Component;
 
 public class TooltipEvents {
     static void registerTooltips(){
         ItemTooltipCallback.EVENT.register(((itemStack, tooltipContext, tooltipType, list) -> {
             if (itemStack.isDamaged()) {
                 int maxDurability = itemStack.getMaxDamage();
-                int durability = maxDurability - itemStack.getDamage();
+                int durability = maxDurability - itemStack.getDamageValue();
 
                 float percent = Math.round(((float) durability / maxDurability) * 100);
 
                 String end = " " + durability + " [" + percent + "%] / " + maxDurability + " ";
-                list.add(Text.literal(end).append(Text.translatable("info.craftplanet.durability")).formatted(Formatting.DARK_GREEN));
+                list.add(Component.literal(end).append(Component.translatable("info.craftplanet.durability")).withStyle(ChatFormatting.DARK_GREEN));
             }
         }));
     }

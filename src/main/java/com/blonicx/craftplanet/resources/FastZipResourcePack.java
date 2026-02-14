@@ -1,11 +1,6 @@
 package com.blonicx.craftplanet.resources;
 
 import com.blonicx.craftplanet.CraftPlanet;
-import net.minecraft.resource.AbstractFileResourcePack;
-import net.minecraft.resource.InputSupplier;
-import net.minecraft.resource.ResourcePackInfo;
-import net.minecraft.resource.ResourceType;
-import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.ByteArrayInputStream;
@@ -15,13 +10,18 @@ import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
+import net.minecraft.resources.Identifier;
+import net.minecraft.server.packs.AbstractPackResources;
+import net.minecraft.server.packs.PackLocationInfo;
+import net.minecraft.server.packs.PackType;
+import net.minecraft.server.packs.resources.IoSupplier;
 
 // Credits: https://github.com/DrexHD/quick-pack/tree/main
 
 /**
  * @author Blonicx
  */
-public class FastZipResourcePack extends AbstractFileResourcePack {
+public class FastZipResourcePack extends AbstractPackResources {
     private final ZipFile zipFile;
 
     private final Map<String, byte[]> cache = new ConcurrentHashMap<>();
@@ -36,7 +36,7 @@ public class FastZipResourcePack extends AbstractFileResourcePack {
     /**
      * Constructor.
      */
-    public FastZipResourcePack(ResourcePackInfo info, ZipFile zipFile, List<String> overlays) {
+    public FastZipResourcePack(PackLocationInfo info, ZipFile zipFile, List<String> overlays) {
         super(info);
         this.zipFile = zipFile;
 
@@ -87,7 +87,7 @@ public class FastZipResourcePack extends AbstractFileResourcePack {
             namespace = parts[1];
         } else return;
 
-        if (Identifier.isNamespaceValid(namespace)) {
+        if (Identifier.isValidNamespace(namespace)) {
             namespaces.computeIfAbsent(type, s -> new HashSet<>()).add(namespace);
         } else {
             CraftPlanet.LOGGER.warn("Invalid namespace {} in pack {}", namespace, zipFile);
@@ -115,14 +115,14 @@ public class FastZipResourcePack extends AbstractFileResourcePack {
     }
 
     @Override
-    public @Nullable InputSupplier<InputStream> openRoot(String... segments) {
+    public @Nullable IoSupplier<InputStream> getRootResource(String... segments) {
         String path = String.join("/", segments);
         byte[] data = loadFile(path);
         return data == null ? null : () -> new ByteArrayInputStream(data);
     }
 
     @Override
-    public @Nullable InputSupplier<InputStream> open(ResourceType type, Identifier id) {
+    public @Nullable IoSupplier<InputStream> getResource(PackType type, Identifier id) {
         for (String prefix : prefixStack) {
             String full = prefix + type.getDirectory() + "/" + id.getNamespace() + "/" + id.getPath();
             byte[] data = loadFile(full);
@@ -134,7 +134,7 @@ public class FastZipResourcePack extends AbstractFileResourcePack {
     }
 
     @Override
-    public void findResources(ResourceType type, String namespace, String path, ResultConsumer out) {
+    public void listResources(PackType type, String namespace, String path, ResourceOutput out) {
         String base = type.getDirectory() + "/" + namespace + "/" + path + "/";
 
         for (String prefix : prefixStack) {
@@ -146,7 +146,7 @@ public class FastZipResourcePack extends AbstractFileResourcePack {
                 if (filePath.startsWith(p)) {
                     String rlPath = filePath.substring((prefix + type.getDirectory() + "/" + namespace + "/").length());
 
-                    Identifier id = Identifier.tryParse(namespace, rlPath);
+                    Identifier id = Identifier.tryBuild(namespace, rlPath);
                     if (id == null) continue;
 
                     out.accept(id, () -> new ByteArrayInputStream(Objects.requireNonNull(loadFile(filePath))));
@@ -156,7 +156,7 @@ public class FastZipResourcePack extends AbstractFileResourcePack {
     }
 
     @Override
-    public Set<String> getNamespaces(ResourceType type) {
+    public Set<String> getNamespaces(PackType type) {
         return namespaces.getOrDefault(type.getDirectory(), Collections.emptySet());
     }
 

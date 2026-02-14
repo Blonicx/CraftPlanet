@@ -2,14 +2,14 @@ package com.blonicx.craftplanet.mixin.rendering.particle;
 
 import com.blonicx.craftplanet.integration.config.ConfigManager;
 import net.minecraft.client.particle.Particle;
-import net.minecraft.client.particle.ParticleRenderer;
+import net.minecraft.client.particle.ParticleGroup;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin(ParticleRenderer.class)
+@Mixin(ParticleGroup.class)
 public abstract class ParticleRendererMixin {
     @Shadow
     public abstract int size();

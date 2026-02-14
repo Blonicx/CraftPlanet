@@ -1,28 +1,29 @@
 package com.blonicx.craftplanet.screens;
 
 import com.blonicx.craftplanet.rendering.TextureLoader;
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.gui.DrawContext;
-import net.minecraft.client.gui.screen.Screen;
-import net.minecraft.client.gui.widget.ButtonWidget;
-import net.minecraft.text.Text;
+import com.blonicx.craftplanet.resources.Cache;
 import org.lwjgl.PointerBuffer;
 import org.lwjgl.system.MemoryStack;
 import org.lwjgl.util.tinyfd.TinyFileDialogs;
 
 import java.io.File;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.components.Button;
+import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.network.chat.Component;
 
 public class SkinEditor extends Screen {
     public SkinEditor() {
-        super(Text.translatable("screen.craftplanet.skin_editor"));
+        super(Component.translatable("screen.craftplanet.skin_editor"));
     }
 
     @Override
     protected void init() {
-        int w = MinecraftClient.getInstance().getWindow().getScaledWidth();
-        int h = MinecraftClient.getInstance().getWindow().getScaledHeight();
+        int w = Minecraft.getInstance().getWindow().getScreenWidth();
+        int h = Minecraft.getInstance().getWindow().getScreenHeight();
 
-        ButtonWidget btn = ButtonWidget.builder(Text.translatable("button.craftplanet.choose_cape"),button -> {
+        Button capeBtn = Button.builder(Component.translatable("button.craftplanet.choose_cape"), button -> {
             try (MemoryStack stack = MemoryStack.stackPush()) {
 
                 PointerBuffer filters = stack.mallocPointer(1);
@@ -41,13 +42,18 @@ public class SkinEditor extends Screen {
                     TextureLoader.CAPE_TEXTURE = TextureLoader.loadTextureFromFile(new File(path), "current_cape");
                 }
             }
-        }).dimensions(40, 40, 120, 20).build();
+        }).bounds(40, 40, 120, 20).build();
 
-        this.addDrawableChild(btn);
+        Button clearCache = Button.builder(Component.translatable("button.craftplanet.clear_cache"), button -> {
+            Cache.clearCache();
+        }).bounds(40, 0, 120, 20).build();
+
+        this.addRenderableWidget(capeBtn);
+        this.addRenderableWidget(clearCache);
     }
 
     @Override
-    public void render(DrawContext context, int mouseX, int mouseY, float delta) {
+    public void render(GuiGraphics context, int mouseX, int mouseY, float delta) {
         super.render(context, mouseX, mouseY, delta);
     }
 }

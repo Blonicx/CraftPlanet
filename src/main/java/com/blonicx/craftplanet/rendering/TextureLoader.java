@@ -3,18 +3,17 @@ package com.blonicx.craftplanet.rendering;
 import com.blonicx.craftplanet.CraftPlanet;
 import com.blonicx.craftplanet.integration.config.ConfigManager;
 import com.blonicx.craftplanet.resources.Cache;
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.texture.NativeImage;
-import net.minecraft.client.texture.NativeImageBackedTexture;
-import net.minecraft.client.texture.TextureManager;
-import net.minecraft.util.Identifier;
-
+import com.mojang.blaze3d.platform.NativeImage;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.texture.DynamicTexture;
+import net.minecraft.client.renderer.texture.TextureManager;
+import net.minecraft.resources.Identifier;
 
 public class TextureLoader {
     public static Identifier CAPE_TEXTURE;
@@ -27,12 +26,12 @@ public class TextureLoader {
 
         try (FileInputStream stream = new FileInputStream(file)) {
             NativeImage image = NativeImage.read(stream);
-            NativeImageBackedTexture texture = new NativeImageBackedTexture(() -> CraftPlanet.MOD_ID + "/cache/" + textureName, image);
+            DynamicTexture texture = new DynamicTexture(() -> CraftPlanet.MOD_ID + "/cache/" + textureName, image);
 
-            Identifier id = Identifier.of(CraftPlanet.MOD_ID, "cache/" + textureName);
+            Identifier id = Identifier.fromNamespaceAndPath(CraftPlanet.MOD_ID, "cache/" + textureName);
 
-            TextureManager textureManager = MinecraftClient.getInstance().getTextureManager();
-            textureManager.registerTexture(id, texture);
+            TextureManager textureManager = Minecraft.getInstance().getTextureManager();
+            textureManager.register(id, texture);
 
             storeFile(file);
 

@@ -1,37 +1,37 @@
 package com.blonicx.craftplanet.mixin.gui.screen;
 
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.gui.DrawContext;
-import net.minecraft.client.gui.hud.InGameHud;
-import net.minecraft.client.render.RenderTickCounter;
+import net.minecraft.client.DeltaTracker;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.Gui;
+import net.minecraft.client.gui.GuiGraphics;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin(InGameHud.class)
+@Mixin(Gui.class)
 public class InGameHudMixin {
 
     @Inject(
             method = "render",
             at = @At("TAIL")
     )
-    private void renderCustomText(DrawContext context, RenderTickCounter tickCounter, CallbackInfo ci) {
-        MinecraftClient client = MinecraftClient.getInstance();
+    private void renderCustomText(GuiGraphics context, DeltaTracker tickCounter, CallbackInfo ci) {
+        Minecraft client = Minecraft.getInstance();
 
-        if (client.player == null || client.options.hudHidden) return;
+        if (client.player == null || client.options.hideGui) return;
 
-        String text = "FPS: " + MinecraftClient.getInstance().getCurrentFps();
+        String text = "FPS: " + Minecraft.getInstance().getFps();
 
-        int screenWidth = client.getWindow().getScaledWidth();
+        int screenWidth = client.getWindow().getGuiScaledWidth();
 
-        int textWidth = client.textRenderer.getWidth(text);
+        int textWidth = client.font.width(text);
 
         int x = screenWidth - textWidth - 4; // 4px padding from right
         int y = 4; // 4px from top
 
-        context.drawText(
-                client.textRenderer,
+        context.drawString(
+                client.font,
                 text,
                 x,
                 y,

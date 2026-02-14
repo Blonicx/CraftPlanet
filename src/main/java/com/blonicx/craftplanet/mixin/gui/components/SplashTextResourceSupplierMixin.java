@@ -1,8 +1,5 @@
 package com.blonicx.craftplanet.mixin.gui.components;
 
-import net.minecraft.client.resource.SplashTextResourceSupplier;
-import net.minecraft.resource.ResourceManager;
-import net.minecraft.util.profiler.Profiler;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Mutable;
 import org.spongepowered.asm.mixin.Shadow;
@@ -11,16 +8,19 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.List;
+import net.minecraft.client.resources.SplashManager;
+import net.minecraft.server.packs.resources.ResourceManager;
+import net.minecraft.util.profiling.ProfilerFiller;
 
-@Mixin(SplashTextResourceSupplier.class)
+@Mixin(SplashManager.class)
 public class SplashTextResourceSupplierMixin {
     @Shadow @Mutable
-    private List<String> splashTexts;
+    private List<String> splashes;
 
-    @Inject(method = "apply(Ljava/util/List;Lnet/minecraft/resource/ResourceManager;Lnet/minecraft/util/profiler/Profiler;)V", at = @At("TAIL"))
-    void apply(List<String> list, ResourceManager resourceManager, Profiler profiler, CallbackInfo ci) {
-        List<String> mutable = new java.util.ArrayList<>(this.splashTexts);
+    @Inject(method = "apply(Ljava/util/List;Lnet/minecraft/server/packs/resources/ResourceManager;Lnet/minecraft/util/profiling/ProfilerFiller;)V", at = @At("TAIL"))
+    void apply(List<String> list, ResourceManager resourceManager, ProfilerFiller profiler, CallbackInfo ci) {
+        List<String> mutable = new java.util.ArrayList<>(this.splashes);
         mutable.add("CraftPlanet!");
-        this.splashTexts = mutable;
+        this.splashes = mutable;
     }
 }

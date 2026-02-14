@@ -1,9 +1,9 @@
 package com.blonicx.craftplanet.rendering;
 
-import net.minecraft.util.AssetInfo;
-import net.minecraft.util.Identifier;
+import net.minecraft.core.ClientAsset;
+import net.minecraft.resources.Identifier;
 
-public class Cape implements AssetInfo.TextureAsset {
+public class Cape implements ClientAsset.Texture {
     Identifier id;
 
     public Cape(Identifier identifier) {

@@ -1,7 +1,7 @@
 package com.blonicx.craftplanet.mixin.rendering.entity.block;
 
 import com.blonicx.craftplanet.integration.config.ConfigManager;
-import net.minecraft.client.render.block.entity.BlockEntityRenderer;
+import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 
@@ -11,7 +11,7 @@ public interface BlockEntityRendererMixin {
      * @author Blonicx
      * @reason Return set max Distance
      */
-    @Overwrite default int getRenderDistance() {
+    @Overwrite default int getViewDistance() {
         return ConfigManager.config.maxBlockEntityRenderDistance;
     }
 }

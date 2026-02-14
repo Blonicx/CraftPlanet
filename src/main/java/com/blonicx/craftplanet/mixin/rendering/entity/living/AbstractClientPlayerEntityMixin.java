@@ -5,11 +5,11 @@ import com.blonicx.craftplanet.rendering.Cape;
 import com.blonicx.craftplanet.rendering.TextureLoader;
 import com.mojang.authlib.GameProfile;
 import net.fabricmc.loader.api.FabricLoader;
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.network.AbstractClientPlayerEntity;
-import net.minecraft.client.network.PlayerListEntry;
-import net.minecraft.client.world.ClientWorld;
-import net.minecraft.entity.player.SkinTextures;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.multiplayer.ClientLevel;
+import net.minecraft.client.multiplayer.PlayerInfo;
+import net.minecraft.client.player.AbstractClientPlayer;
+import net.minecraft.world.entity.player.PlayerSkin;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -22,13 +22,13 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import java.io.File;
 import java.util.Objects;
 
-@Mixin(AbstractClientPlayerEntity.class)
+@Mixin(AbstractClientPlayer.class)
 public abstract class AbstractClientPlayerEntityMixin {
     @Shadow @Nullable
-    protected abstract PlayerListEntry getPlayerListEntry();
+    protected abstract PlayerInfo getPlayerInfo();
 
     @Inject(method = "<init>", at = @At("HEAD"))
-    private static void init(ClientWorld world, GameProfile profile, CallbackInfo ci){
+    private static void init(ClientLevel world, GameProfile profile, CallbackInfo ci){
         if (!Objects.equals(ConfigManager.config.cape_name, "")) {
             TextureLoader.CAPE_TEXTURE = TextureLoader.loadTextureFromFile(
                     new File(FabricLoader.getInstance().getConfigDir().toFile(), "craftplanet/cache/" + ConfigManager.config.cape_name),
@@ -38,11 +38,11 @@ public abstract class AbstractClientPlayerEntityMixin {
     }
 
     @Inject(method = "getSkin", at = @At("RETURN"), cancellable = true)
-    private void getSkin(CallbackInfoReturnable<SkinTextures> cir) {
+    private void getSkin(CallbackInfoReturnable<PlayerSkin> cir) {
         if(isLocal()) {
-            SkinTextures original = cir.getReturnValue();
+            PlayerSkin original = cir.getReturnValue();
 
-            SkinTextures modified = SkinTextures.create(
+            PlayerSkin modified = PlayerSkin.insecure(
                     original.body(),
                     TextureLoader.CAPE_TEXTURE != null ? new Cape(TextureLoader.CAPE_TEXTURE) : original.cape(),
                     original.elytra(),
@@ -55,6 +55,6 @@ public abstract class AbstractClientPlayerEntityMixin {
 
     @Unique
     boolean isLocal() {
-        return Objects.equals(getPlayerListEntry(), MinecraftClient.getInstance().getNetworkHandler().getPlayerListEntry(MinecraftClient.getInstance().player.getUuid()));
+        return Objects.equals(getPlayerInfo(), Minecraft.getInstance().getConnection().getPlayerInfo(Minecraft.getInstance().player.getUUID()));
     }
 }
