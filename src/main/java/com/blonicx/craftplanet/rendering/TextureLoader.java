@@ -45,8 +45,10 @@ public class TextureLoader {
     static void storeFile(File file) {
         try {
             Path original = file.toPath();
-            File destFile = new File(Cache.CACHE_DIR + original.getFileName());
+            File destFile = new File(Cache.CACHE_DIR + "/" + original.getFileName());
             Path copied = destFile.toPath();
+
+            CraftPlanet.LOGGER.info("Saved to: {}", copied);
 
             Files.createDirectories(copied.getParent());
 
