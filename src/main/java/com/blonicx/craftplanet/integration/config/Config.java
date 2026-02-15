@@ -8,7 +8,7 @@ public class Config {
     // Performance
 
     // General
-    public boolean disableWeatherRendering = true;
+    public boolean disableWeatherRendering = false;
 
     // Particle
     public int maxParticles = 5000;

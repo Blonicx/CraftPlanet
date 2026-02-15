@@ -23,7 +23,7 @@ public class ModConfigScreen {
         general.addEntry(entry.startBooleanToggle(
                                 Component.translatable("settings.craftplanet.disableArmorRendering"),
                                 ConfigManager.config.disableArmorRendering
-                        ).setDefaultValue(true)
+                        ).setDefaultValue(false)
                         .setTooltip(Component.translatable("settings.craftplanet.disableArmorRendering_tooltip"))
                         .setSaveConsumer(newValue -> ConfigManager.config.disableWeatherRendering = newValue)
                         .build()
@@ -48,7 +48,7 @@ public class ModConfigScreen {
         generalSub.add(entry.startBooleanToggle(
                                 Component.translatable("settings.craftplanet.disableWeatherRendering"),
                                 ConfigManager.config.disableWeatherRendering
-                        ).setDefaultValue(true)
+                        ).setDefaultValue(false)
                         .setTooltip(Component.translatable("settings.craftplanet.disableWeatherRendering_tooltip"))
                         .setSaveConsumer(newValue -> ConfigManager.config.disableWeatherRendering = newValue)
                         .build()
