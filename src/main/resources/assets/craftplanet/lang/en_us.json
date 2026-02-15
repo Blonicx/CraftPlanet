@@ -10,9 +10,7 @@
 
   "screen.craftplanet.skin_editor": "Skin Editor",
 
-  "info.craftplanet.harmful_chat_msg":  "Harmful Message!",
   "info.craftplanet.durability": "Durability",
-  "info.craftplanet.add_words": "To add words, go to you mod folder, then config/craftplanet and go into the harmful_words.txt file. Each line represents a custom blocked Word!",
 
   "title.craftplanet.config": "CraftPlanet",
 
@@ -23,7 +21,6 @@
   "settings.craftplanet.particlesDescription": "Particles",
   "settings.craftplanet.renderDistancesDescription": "Render Distances",
 
-  "settings.craftplanet.filterChat": "Enable Chat Filtering",
   "settings.craftplanet.disableArmorRendering": "Disable Armor Rendering",
   "settings.craftplanet.disableWeatherRendering": "Disable Weather Rendering",
   "settings.craftplanet.maxParticles": "Max Amount of Particles",
@@ -32,7 +29,6 @@
   "settings.craftplanet.maxBlockEntityRenderDistance": "Block Entity Render Distance",
   "settings.craftplanet.maxEntityRenderDistance": "Entity Render Distance",
 
-  "settings.craftplanet.filterChat_tooltip": "If this is enabled, the chat will not display any messages that contain harmful content",
   "settings.craftplanet.disableArmorRendering_tooltip": "If this is enabled, the armors will not be rendered",
   "settings.craftplanet.disableWeatherRendering_tooltip": "If this is enabled, all weather effects like sound or particles won't get rendered",
   "settings.craftplanet.maxParticles_tooltip": "The maximum amount of Particles that can be rendered at the same time",

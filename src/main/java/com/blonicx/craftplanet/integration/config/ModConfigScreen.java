@@ -28,20 +28,6 @@ public class ModConfigScreen {
                         .build()
         );
 
-        general.addEntry(entry.startBooleanToggle(
-                                Component.translatable("settings.craftplanet.filterChat"),
-                                ConfigManager.config.filterChat
-                        ).setDefaultValue(true)
-                        .setTooltip(Component.translatable("settings.craftplanet.filterChat_tooltip"))
-                        .setSaveConsumer(newValue -> ConfigManager.config.filterChat = newValue)
-                        .build()
-        );
-
-        general.addEntry(
-                entry.startTextDescription(Component.translatable("info.craftplanet.add_words")
-                ).build()
-        );
-
         // Performance
         var generalSub = entry.startSubCategory(
                 Component.translatable("settings.craftplanet.generalDescription")

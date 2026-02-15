@@ -2,7 +2,6 @@ package com.blonicx.craftplanet.integration.config;
 
 public class Config {
     // General
-    public boolean filterChat = true;
     public boolean disableArmorRendering = false;
 
     // Performance

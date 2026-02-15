@@ -5,7 +5,6 @@
   "mixins": [
     "WindowMixin",
 
-    "gui.chat.ChatHudMixin",
     "gui.screen.SkinOptionsScreenMixin",
     "gui.components.MultiplayerServerListWidgetMixin",
     "gui.components.SplashTextResourceSupplierMixin",
