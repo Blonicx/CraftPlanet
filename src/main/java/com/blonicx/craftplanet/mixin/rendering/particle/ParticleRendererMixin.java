@@ -1,6 +1,6 @@
 package com.blonicx.craftplanet.mixin.rendering.particle;
 
-import com.blonicx.craftplanet.integration.config.ConfigManager;
+import com.blonicx.craftplanet.integration.CPlanetConfig;
 import net.minecraft.client.particle.Particle;
 import net.minecraft.client.particle.ParticleGroup;
 import org.spongepowered.asm.mixin.Mixin;
@@ -16,7 +16,7 @@ public abstract class ParticleRendererMixin {
 
     @Inject(method = "add", at = @At("HEAD"), cancellable = true)
     void add(Particle particle, CallbackInfo ci){
-        if (!(this.size() < ConfigManager.config.maxParticles)) {
+        if (!(this.size() < CPlanetConfig.INSTANCE.instance().maxParticles)) {
             ci.cancel();
         }
     }

@@ -1,7 +1,7 @@
 package com.blonicx.craftplanet.mixin.gui.chat;
 
 import com.blonicx.craftplanet.CraftPlanet;
-import com.blonicx.craftplanet.integration.config.ConfigManager;
+import com.blonicx.craftplanet.integration.CPlanetConfig;
 import net.minecraft.client.GuiMessage;
 import net.minecraft.client.gui.components.ChatComponent;
 import org.spongepowered.asm.mixin.Final;
@@ -26,7 +26,7 @@ public class ChatComponentMixin {
 
         this.allMessages.add(guiMessage);
 
-        while (this.allMessages.size() > ConfigManager.config.maxChatMessages) {
+        while (this.allMessages.size() > CPlanetConfig.INSTANCE.instance().maxChatMessages) {
             this.allMessages.removeLast();
         }
 

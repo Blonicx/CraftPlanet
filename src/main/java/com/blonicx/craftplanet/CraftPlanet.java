@@ -2,11 +2,9 @@ package com.blonicx.craftplanet;
 
 import com.blonicx.craftplanet.event.KeyInputEvents;
 import com.blonicx.craftplanet.event.TooltipEvents;
-import com.blonicx.craftplanet.integration.config.ConfigManager;
+import com.blonicx.craftplanet.integration.CPlanetConfig;
 import net.fabricmc.api.ClientModInitializer;
 
-import net.fabricmc.loader.api.FabricLoader;
-import net.minecraft.client.Minecraft;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -21,7 +19,7 @@ public class CraftPlanet implements ClientModInitializer {
         TooltipEvents.register();
 
         // Load Data
-        ConfigManager.load(FabricLoader.getInstance().getConfigDir().toFile());
+        CPlanetConfig.INSTANCE.load();
 
         LOGGER.info("CraftPlanet initialized!");
     }

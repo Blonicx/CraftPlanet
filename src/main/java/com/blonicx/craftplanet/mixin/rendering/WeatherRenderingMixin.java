@@ -1,6 +1,6 @@
 package com.blonicx.craftplanet.mixin.rendering;
 
-import com.blonicx.craftplanet.integration.config.ConfigManager;
+import com.blonicx.craftplanet.integration.CPlanetConfig;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -18,14 +18,14 @@ import net.minecraft.world.phys.Vec3;
 public class WeatherRenderingMixin {
     @Inject(method = "renderInstances", at = @At("HEAD"), cancellable = true)
     void renderPieces(VertexConsumer vertexConsumer, List<WeatherEffectRenderer.ColumnInstance> pieces, Vec3 pos, float intensity, int range, float gradient, CallbackInfo ci) {
-        if (ConfigManager.config.disableWeatherRendering) {
+        if (CPlanetConfig.INSTANCE.instance().disableWeatherRendering) {
             ci.cancel();
         }
     }
 
     @Inject(method = "tickRainParticles", at = @At("HEAD"), cancellable = true)
     void addParticlesAndSound(ClientLevel world, Camera camera, int ticks, ParticleStatus particlesMode, int weatherRadius, CallbackInfo ci) {
-        if (ConfigManager.config.disableWeatherRendering) {
+        if (CPlanetConfig.INSTANCE.instance().disableWeatherRendering) {
             ci.cancel();
         }
     }

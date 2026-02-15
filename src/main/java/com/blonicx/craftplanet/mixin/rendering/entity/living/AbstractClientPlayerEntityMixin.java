@@ -1,6 +1,6 @@
 package com.blonicx.craftplanet.mixin.rendering.entity.living;
 
-import com.blonicx.craftplanet.integration.config.ConfigManager;
+import com.blonicx.craftplanet.integration.CPlanetConfig;
 import com.blonicx.craftplanet.rendering.Cape;
 import com.blonicx.craftplanet.rendering.TextureLoader;
 import com.mojang.authlib.GameProfile;
@@ -29,9 +29,9 @@ public abstract class AbstractClientPlayerEntityMixin {
 
     @Inject(method = "<init>", at = @At("HEAD"))
     private static void init(ClientLevel world, GameProfile profile, CallbackInfo ci){
-        if (!Objects.equals(ConfigManager.config.cape_name, "")) {
+        if (!Objects.equals(CPlanetConfig.INSTANCE.instance().cape_name, "")) {
             TextureLoader.CAPE_TEXTURE = TextureLoader.loadTextureFromFile(
-                    new File(FabricLoader.getInstance().getConfigDir().toFile(), "craftplanet/cache/" + ConfigManager.config.cape_name),
+                    new File(FabricLoader.getInstance().getConfigDir().toFile(), "craftplanet/cache/" + CPlanetConfig.INSTANCE.instance().cape_name),
                     "current_cape"
             );
         }

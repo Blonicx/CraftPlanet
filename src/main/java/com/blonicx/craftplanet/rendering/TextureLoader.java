@@ -1,7 +1,7 @@
 package com.blonicx.craftplanet.rendering;
 
 import com.blonicx.craftplanet.CraftPlanet;
-import com.blonicx.craftplanet.integration.config.ConfigManager;
+import com.blonicx.craftplanet.integration.CPlanetConfig;
 import com.blonicx.craftplanet.resources.Cache;
 import com.mojang.blaze3d.platform.NativeImage;
 import java.io.File;
@@ -20,7 +20,7 @@ public class TextureLoader {
 
     public static Identifier loadTextureFromFile(File file, String textureName) {
         if (!file.exists()) {
-            ConfigManager.config.cape_name = "";
+            CPlanetConfig.INSTANCE.instance().cape_name = "";
             return null;
         }
 
@@ -53,8 +53,8 @@ public class TextureLoader {
 
             Files.copy(original, copied, StandardCopyOption.REPLACE_EXISTING);
 
-            ConfigManager.config.cape_name = destFile.getName();
-            ConfigManager.save();
+            CPlanetConfig.INSTANCE.instance().cape_name = destFile.getName();
+            CPlanetConfig.INSTANCE.save();
         } catch (IOException e) {
             e.printStackTrace();
         }

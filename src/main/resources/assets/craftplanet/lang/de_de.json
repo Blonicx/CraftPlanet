@@ -7,6 +7,7 @@
 
   "button.craftplanet.choose_cape": "Cape laden",
   "button.craftplanet.skin_editor": "Skin Editor",
+  "button.craftplanet.clear_cache": "Cache leeren",
 
   "screen.craftplanet.skin_editor": "Skin Editor",
 
@@ -16,6 +17,7 @@
 
   "category.craftplanet.general": "Allgemein",
   "category.craftplanet.performance": "Leistung",
+  "category.craftplanet.other": "Andere",
 
   "settings.craftplanet.generalDescription": "Allgemein",
   "settings.craftplanet.particlesDescription": "Partikel",
@@ -37,5 +39,6 @@
   "settings.craftplanet.maxSignTextRendering_tooltip": "Die maximale Entfernung der angezeigten Schildertexte.",
   "settings.craftplanet.maxItemFrameRendering_tooltip": "Die maximale Entfernung der angezeigten Gegenstandsrahmen.",
   "settings.craftplanet.maxBlockEntityRenderDistance_tooltip": "Die maximale Entfernung von Block-Entitäten, die gerendert werden.",
-  "settings.craftplanet.maxEntityRenderDistance_tooltip": "Die maximale Entfernung von Entitäten, die gerendert werden."
+  "settings.craftplanet.maxEntityRenderDistance_tooltip": "Die maximale Entfernung von Entitäten, die gerendert werden.",
+  "settings.craftplanet.clear_cache_tooltip": "Löscht den Cache an Capes."
 }

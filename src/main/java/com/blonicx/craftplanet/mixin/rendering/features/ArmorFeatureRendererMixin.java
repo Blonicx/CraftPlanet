@@ -1,6 +1,6 @@
 package com.blonicx.craftplanet.mixin.rendering.features;
 
-import com.blonicx.craftplanet.integration.config.ConfigManager;
+import com.blonicx.craftplanet.integration.CPlanetConfig;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.renderer.SubmitNodeCollector;
@@ -17,6 +17,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class ArmorFeatureRendererMixin<S extends HumanoidRenderState, M extends HumanoidModel<S>, A extends HumanoidModel<S>> {
     @Inject(method = "renderArmorPiece", at = @At("HEAD"), cancellable = true)
     void render(PoseStack matrices, SubmitNodeCollector queue, ItemStack stack, EquipmentSlot slot, int light, S state, CallbackInfo ci) {
-        if (ConfigManager.config.disableArmorRendering) ci.cancel();
+        if (CPlanetConfig.INSTANCE.instance().disableArmorRendering) ci.cancel();
     }
 }

@@ -7,6 +7,7 @@
 
   "button.craftplanet.choose_cape": "Load a Cape",
   "button.craftplanet.skin_editor": "Skin Editor",
+  "button.craftplanet.clear_cache": "Clear Cache",
 
   "screen.craftplanet.skin_editor": "Skin Editor",
 
@@ -16,6 +17,7 @@
 
   "category.craftplanet.general": "General",
   "category.craftplanet.performance": "Performance",
+  "category.craftplanet.other": "Other",
 
   "settings.craftplanet.generalDescription": "General",
   "settings.craftplanet.particlesDescription": "Particles",
@@ -30,12 +32,13 @@
   "settings.craftplanet.maxBlockEntityRenderDistance": "Block Entity Render Distance",
   "settings.craftplanet.maxEntityRenderDistance": "Entity Render Distance",
 
-  "settings.craftplanet.disableArmorRendering_tooltip": "If this is enabled, the armors will not be rendered",
+  "settings.craftplanet.disableArmorRendering_tooltip": "If this is enabled, the armors will not be rendered.",
   "settings.craftplanet.maxChatMessages_tooltip": "The amount of maximum Chat Messages.",
-  "settings.craftplanet.disableWeatherRendering_tooltip": "If this is enabled, all weather effects like sound or particles won't get rendered",
-  "settings.craftplanet.maxParticles_tooltip": "The maximum amount of Particles that can be rendered at the same time",
-  "settings.craftplanet.maxSignTextRendering_tooltip": "The maximum distance of Sign Texts that get rendered",
-  "settings.craftplanet.maxItemFrameRendering_tooltip": "The maximum distance of Item Frames that get rendered",
-  "settings.craftplanet.maxBlockEntityRenderDistance_tooltip": "The maximum distance of Block Entities that get rendered",
-  "settings.craftplanet.maxEntityRenderDistance_tooltip": "The maximum distance of Entities that get rendered"
+  "settings.craftplanet.disableWeatherRendering_tooltip": "If this is enabled, all weather effects like sound or particles won't get rendered.",
+  "settings.craftplanet.maxParticles_tooltip": "The maximum amount of Particles that can be rendered at the same time.",
+  "settings.craftplanet.maxSignTextRendering_tooltip": "The maximum distance of Sign Texts that get rendered.",
+  "settings.craftplanet.maxItemFrameRendering_tooltip": "The maximum distance of Item Frames that get rendered.",
+  "settings.craftplanet.maxBlockEntityRenderDistance_tooltip": "The maximum distance of Block Entities that get rendered.",
+  "settings.craftplanet.maxEntityRenderDistance_tooltip": "The maximum distance of Entities that get rendered.",
+  "settings.craftplanet.clear_cache_tooltip": "Clears the cached Capes."
 }

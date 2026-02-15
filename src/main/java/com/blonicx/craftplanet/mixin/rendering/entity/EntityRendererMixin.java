@@ -1,6 +1,6 @@
 package com.blonicx.craftplanet.mixin.rendering.entity;
 
-import com.blonicx.craftplanet.integration.config.ConfigManager;
+import com.blonicx.craftplanet.integration.CPlanetConfig;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.culling.Frustum;
 import net.minecraft.client.renderer.entity.EntityRenderer;
@@ -14,6 +14,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class EntityRendererMixin<T extends Entity> {
     @Inject(method = "shouldRender", at = @At("HEAD"), cancellable = true)
     void shouldRender(T entity, Frustum frustum, double x, double y, double z, CallbackInfoReturnable<Boolean> cir) {
-        if (!entity.closerThan(Minecraft.getInstance().player, ConfigManager.config.maxEntityRenderDistance)) cir.setReturnValue(false);
+        if (!entity.closerThan(Minecraft.getInstance().player, CPlanetConfig.INSTANCE.instance().maxEntityRenderDistance)) cir.setReturnValue(false);
     }
 }

@@ -1,6 +1,6 @@
 package com.blonicx.craftplanet.mixin.rendering.entity.block;
 
-import com.blonicx.craftplanet.integration.config.ConfigManager;
+import com.blonicx.craftplanet.integration.CPlanetConfig;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
@@ -19,6 +19,6 @@ public class AbstractSignBlockEntityRendererMixin {
         LocalPlayer player = Minecraft.getInstance().player;
 
         assert player!=null;
-        if (!player.blockPosition().closerThan(renderState.blockPos, ConfigManager.config.maxSignRenderDistance)) ci.cancel();
+        if (!player.blockPosition().closerThan(renderState.blockPos, CPlanetConfig.INSTANCE.instance().maxSignRenderDistance)) ci.cancel();
     }
 }

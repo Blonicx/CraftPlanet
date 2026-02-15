@@ -1,6 +1,6 @@
 package com.blonicx.craftplanet.mixin.rendering.entity.block;
 
-import com.blonicx.craftplanet.integration.config.ConfigManager;
+import com.blonicx.craftplanet.integration.CPlanetConfig;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
@@ -20,6 +20,6 @@ public class ItemFrameEntityRendererMixin {
         LocalPlayer player = Minecraft.getInstance().player;
 
         assert player!=null;
-        if (!player.blockPosition().closerToCenterThan(cameraRenderState.pos, ConfigManager.config.maxItemFrameRenderDistance)) ci.cancel();
+        if (!player.blockPosition().closerToCenterThan(cameraRenderState.pos, CPlanetConfig.INSTANCE.instance().maxItemFrameRenderDistance)) ci.cancel();
     }
 }
