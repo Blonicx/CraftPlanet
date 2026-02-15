@@ -2,6 +2,7 @@ package com.blonicx.craftplanet.integration.config;
 
 import me.shedaniel.clothconfig2.api.ConfigBuilder;
 import me.shedaniel.clothconfig2.api.ConfigEntryBuilder;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 
@@ -25,6 +26,17 @@ public class ModConfigScreen {
                         ).setDefaultValue(true)
                         .setTooltip(Component.translatable("settings.craftplanet.disableArmorRendering_tooltip"))
                         .setSaveConsumer(newValue -> ConfigManager.config.disableWeatherRendering = newValue)
+                        .build()
+        );
+
+        general.addEntry(entry.startIntField(
+                                Component.translatable("settings.craftplanet.maxChatMessages"),
+                                ConfigManager.config.maxChatMessages
+                        ).setDefaultValue(100)
+                        .setMin(0)
+                        .setMax(10000)
+                        .setTooltip(Component.translatable("settings.craftplanet.maxChatMessages_tooltip"))
+                        .setSaveConsumer(newValue -> ConfigManager.config.maxChatMessages = newValue)
                         .build()
         );
 
@@ -55,7 +67,10 @@ public class ModConfigScreen {
                         .setTooltip(Component.translatable("settings.craftplanet.maxParticles_tooltip"))
                         .setMin(0)
                         .setMax(10000)
-                        .setSaveConsumer(newValue -> ConfigManager.config.maxParticles = newValue)
+                        .setSaveConsumer(newValue -> {
+                            ConfigManager.config.maxParticles = newValue;
+                            if (newValue == 0) Minecraft.getInstance().particleEngine.clearParticles();
+                        })
                         .build()
         );
 

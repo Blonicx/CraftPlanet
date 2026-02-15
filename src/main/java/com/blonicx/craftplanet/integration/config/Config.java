@@ -3,6 +3,7 @@ package com.blonicx.craftplanet.integration.config;
 public class Config {
     // General
     public boolean disableArmorRendering = false;
+    public int maxChatMessages = 100;
 
     // Performance
 

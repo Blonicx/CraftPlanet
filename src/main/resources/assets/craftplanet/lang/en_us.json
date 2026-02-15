@@ -22,6 +22,7 @@
   "settings.craftplanet.renderDistancesDescription": "Render Distances",
 
   "settings.craftplanet.disableArmorRendering": "Disable Armor Rendering",
+  "settings.craftplanet.maxChatMessages": "Max Chat Messages",
   "settings.craftplanet.disableWeatherRendering": "Disable Weather Rendering",
   "settings.craftplanet.maxParticles": "Max Amount of Particles",
   "settings.craftplanet.maxSignTextRendering": "Sign Text Render Distance",
@@ -30,6 +31,7 @@
   "settings.craftplanet.maxEntityRenderDistance": "Entity Render Distance",
 
   "settings.craftplanet.disableArmorRendering_tooltip": "If this is enabled, the armors will not be rendered",
+  "settings.craftplanet.maxChatMessages_tooltip": "The amount of maximum Chat Messages.",
   "settings.craftplanet.disableWeatherRendering_tooltip": "If this is enabled, all weather effects like sound or particles won't get rendered",
   "settings.craftplanet.maxParticles_tooltip": "The maximum amount of Particles that can be rendered at the same time",
   "settings.craftplanet.maxSignTextRendering_tooltip": "The maximum distance of Sign Texts that get rendered",
