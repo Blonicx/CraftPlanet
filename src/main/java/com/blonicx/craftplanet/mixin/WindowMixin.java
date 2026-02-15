@@ -10,12 +10,14 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(Window.class)
 public class WindowMixin {
-    @Unique int FPS = Minecraft.getInstance().options.framerateLimit().get();
+    @Unique int fps = -1;
 
     @Inject(method = "onFocus", at = @At("HEAD"))
-    void onWindowFocusChanged(long window, boolean focused, CallbackInfo ci) {
-        if (!focused) FPS = Minecraft.getInstance().options.framerateLimit().get();
+    void onFocus(long window, boolean focused, CallbackInfo ci) {
+        var mc = Minecraft.getInstance();
 
-        Minecraft.getInstance().options.framerateLimit().set(focused ? FPS : 15);
+        if (fps == -1) fps = mc.options.framerateLimit().get();
+
+        mc.options.framerateLimit().set(focused ? fps : 15);
     }
 }
