@@ -18,8 +18,8 @@ public class CompatIdentifier {
         return Identifier.isValidNamespace(namespace);
     }
 
-    public static Identifier tryBuild(String namespace) {
-        return Identifier.tryBuild(namespace);
+    public static Identifier tryBuild(String namespace, String path) {
+        return Identifier.tryBuild(namespace, path);
     }
 }
 *///?} else {
