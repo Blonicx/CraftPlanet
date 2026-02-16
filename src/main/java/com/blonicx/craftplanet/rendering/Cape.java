@@ -3,12 +3,13 @@ package com.blonicx.craftplanet.rendering;
 import net.minecraft.core.ClientAsset;
 
 //? if >=1.21.11 {
-/*import net.minecraft.resources.Identifier;
- *///?} else {
+/*import net.minecraft.resources.Identifier;*/
+//?} else {
 import net.minecraft.resources.ResourceLocation;
 //?}
-/*
-public class Cape implements ClientAsset.Texture {
+
+//? if >=1.21.11 {
+/*public class Cape implements ClientAsset.Texture {
     Identifier id;
 
     public Cape(Identifier identifier) {
@@ -24,8 +25,8 @@ public class Cape implements ClientAsset.Texture {
     public Identifier id() {
         return id;
     }
-}
-*///?} else {
+}*/
+//?} else {
 public class Cape implements ClientAsset.Texture {
     ResourceLocation id;
 
