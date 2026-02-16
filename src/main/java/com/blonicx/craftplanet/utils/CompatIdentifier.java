@@ -22,7 +22,6 @@ public class CompatIdentifier {
         return Identifier.tryBuild(namespace);
     }
 }
-}
 *///?} else {
 public class CompatIdentifier {
 
