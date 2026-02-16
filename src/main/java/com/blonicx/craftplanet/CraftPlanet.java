@@ -3,6 +3,7 @@ package com.blonicx.craftplanet;
 import com.blonicx.craftplanet.event.KeyInputEvents;
 import com.blonicx.craftplanet.event.TooltipEvents;
 import com.blonicx.craftplanet.integration.CPlanetConfig;
+import com.blonicx.craftplanet.resources.Cache;
 import net.fabricmc.api.ClientModInitializer;
 
 import org.slf4j.Logger;
@@ -19,6 +20,7 @@ public class CraftPlanet implements ClientModInitializer {
         TooltipEvents.register();
 
         // Load Data
+        Cache.init();
         CPlanetConfig.INSTANCE.load();
 
         LOGGER.info("CraftPlanet initialized!");

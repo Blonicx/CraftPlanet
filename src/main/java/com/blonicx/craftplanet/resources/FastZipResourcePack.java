@@ -1,6 +1,7 @@
 package com.blonicx.craftplanet.resources;
 
 import com.blonicx.craftplanet.CraftPlanet;
+import com.blonicx.craftplanet.utils.CompatIdentifier;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.ByteArrayInputStream;
@@ -10,11 +11,16 @@ import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
-import net.minecraft.resources.Identifier;
 import net.minecraft.server.packs.AbstractPackResources;
 import net.minecraft.server.packs.PackLocationInfo;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.server.packs.resources.IoSupplier;
+
+//? if >=1.21.11 {
+/*import net.minecraft.resources.Identifier;
+ *///?} else {
+import net.minecraft.resources.ResourceLocation;
+//?}
 
 // Credits: https://github.com/DrexHD/quick-pack/tree/main
 
@@ -87,7 +93,7 @@ public class FastZipResourcePack extends AbstractPackResources {
             namespace = parts[1];
         } else return;
 
-        if (Identifier.isValidNamespace(namespace)) {
+        if (CompatIdentifier.isValidNamespace(namespace)) {
             namespaces.computeIfAbsent(type, s -> new HashSet<>()).add(namespace);
         } else {
             CraftPlanet.LOGGER.warn("Invalid namespace {} in pack {}", namespace, zipFile);
@@ -121,10 +127,12 @@ public class FastZipResourcePack extends AbstractPackResources {
         return data == null ? null : () -> new ByteArrayInputStream(data);
     }
 
-    @Override
-    public @Nullable IoSupplier<InputStream> getResource(PackType type, Identifier id) {
+    //? if >= 1.21.11 {
+    /*@Override
+    public @Nullable IoSupplier<InputStream> getResource(PackType packType, Identifier id) {
         for (String prefix : prefixStack) {
-            String full = prefix + type.getDirectory() + "/" + id.getNamespace() + "/" + id.getPath();
+
+            String full = prefix + packType.getDirectory() + "/" + id.getNamespace() + "/" + id.getPath();
             byte[] data = loadFile(full);
             if (data != null) {
                 return () -> new ByteArrayInputStream(data);
@@ -132,6 +140,20 @@ public class FastZipResourcePack extends AbstractPackResources {
         }
         return null;
     }
+     *///?} else {
+    @Override
+    public @Nullable IoSupplier<InputStream> getResource(PackType packType, ResourceLocation id) {
+        for (String prefix : prefixStack) {
+
+            String full = prefix + packType.getDirectory() + "/" + id.getNamespace() + "/" + id.getPath();
+            byte[] data = loadFile(full);
+            if (data != null) {
+                return () -> new ByteArrayInputStream(data);
+            }
+        }
+        return null;
+    }
+    //?}
 
     @Override
     public void listResources(PackType type, String namespace, String path, ResourceOutput out) {
@@ -146,7 +168,12 @@ public class FastZipResourcePack extends AbstractPackResources {
                 if (filePath.startsWith(p)) {
                     String rlPath = filePath.substring((prefix + type.getDirectory() + "/" + namespace + "/").length());
 
-                    Identifier id = Identifier.tryBuild(namespace, rlPath);
+                    //? if >= 1.21.11 {
+                    /*Identifier id = CompatIdentifier.tryBuild(namespace);
+                     *///?} else {
+                    ResourceLocation id = CompatIdentifier.tryBuild(namespace, path);
+                    //?}
+
                     if (id == null) continue;
 
                     out.accept(id, () -> new ByteArrayInputStream(Objects.requireNonNull(loadFile(filePath))));

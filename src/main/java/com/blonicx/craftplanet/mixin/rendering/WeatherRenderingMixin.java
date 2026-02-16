@@ -24,7 +24,11 @@ public class WeatherRenderingMixin {
     }
 
     @Inject(method = "tickRainParticles", at = @At("HEAD"), cancellable = true)
-    void addParticlesAndSound(ClientLevel world, Camera camera, int ticks, ParticleStatus particlesMode, int weatherRadius, CallbackInfo ci) {
+    //? if >= 1.21.11 {
+    /*void addParticlesAndSound(ClientLevel world, Camera camera, int ticks, ParticleStatus particlesMode, int weatherRadius, CallbackInfo ci) {
+    *///?} else {
+    void addParticlesAndSound(ClientLevel clientLevel, Camera camera, int i, ParticleStatus particleStatus, CallbackInfo ci) {
+    //?}
         if (CPlanetConfig.INSTANCE.instance().disableWeatherRendering) {
             ci.cancel();
         }
