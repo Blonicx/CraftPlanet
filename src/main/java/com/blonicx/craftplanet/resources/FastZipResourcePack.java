@@ -169,9 +169,9 @@ public class FastZipResourcePack extends AbstractPackResources {
                     String rlPath = filePath.substring((prefix + type.getDirectory() + "/" + namespace + "/").length());
 
                     //? if >= 1.21.11 {
-                    /*Identifier id = CompatIdentifier.tryBuild(namespace, path);
+                    /*Identifier id = CompatIdentifier.tryBuild(namespace, rlPath);
                      *///?} else {
-                    ResourceLocation id = CompatIdentifier.tryBuild(namespace, path);
+                    ResourceLocation id = CompatIdentifier.tryBuild(namespace, rlPath);
                     //?}
 
                     if (id == null) continue;
