@@ -5,6 +5,7 @@ import com.blonicx.craftplanet.CraftPlanet;
 import com.blonicx.craftplanet.resources.Cache;
 import com.blonicx.craftplanet.utils.CompatIdentifier;
 import com.google.gson.GsonBuilder;
+import dev.blonicx.craftlib.api.particle.Particles;
 import dev.isxander.yacl3.api.*;
 import dev.isxander.yacl3.api.controller.IntegerFieldControllerBuilder;
 import dev.isxander.yacl3.api.controller.TickBoxControllerBuilder;
@@ -12,7 +13,6 @@ import dev.isxander.yacl3.config.v2.api.ConfigClassHandler;
 import dev.isxander.yacl3.config.v2.api.SerialEntry;
 import dev.isxander.yacl3.config.v2.api.serializer.GsonConfigSerializerBuilder;
 import net.fabricmc.loader.api.FabricLoader;
-import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
 
 public class CPlanetConfig {
@@ -100,7 +100,7 @@ public class CPlanetConfig {
                                         () -> config.maxParticles,
                                         val -> {
                                             config.maxParticles = val;
-                                            Minecraft.getInstance().particleEngine.clearParticles();
+                                            Particles.ENGINE.clearParticles();
                                         }
                                 ).controller(opt -> IntegerFieldControllerBuilder.create(opt)
                                         .min(0)

@@ -20,6 +20,18 @@ repositories {
         name 'Xander Maven'
         url 'https://maven.isxander.dev/releases'
     }
+
+    exclusiveContent {
+        forRepository {
+            maven {
+                name = "Modrinth"
+                url = "https://api.modrinth.com/maven"
+            }
+        }
+        filter {
+            includeGroup "maven.modrinth"
+        }
+    }
 }
 
 dependencies {
@@ -36,6 +48,9 @@ dependencies {
 
     // Mod Config
     modApi "dev.isxander:yet-another-config-lib:${project.property("deps.yacl_version")}"
+
+    // CraftLib
+    modApi "maven.modrinth:craftlib:${project.property("deps.craftlib_version")}"
 }
 
 processResources {
