@@ -9,7 +9,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.multiplayer.PlayerInfo;
 import net.minecraft.client.player.AbstractClientPlayer;
-import net.minecraft.world.entity.player.PlayerSkin;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -18,6 +17,12 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+//? if >= 1.21.9 {
+import net.minecraft.world.entity.player.PlayerSkin;
+//?} else {
+/*import net.minecraft.client.resources.PlayerSkin;
+*///?}
+
 
 import java.io.File;
 import java.util.Objects;
@@ -42,12 +47,22 @@ public abstract class AbstractClientPlayerEntityMixin {
         if(isLocal()) {
             PlayerSkin original = cir.getReturnValue();
 
+            //? if >=1.21.9 {
             PlayerSkin modified = PlayerSkin.insecure(
                     original.body(),
                     TextureLoader.CAPE_TEXTURE != null ? new Cape(TextureLoader.CAPE_TEXTURE) : original.cape(),
                     original.elytra(),
                     original.model()
             );
+             //?} else {
+            /*PlayerSkin modified = new PlayerSkin(
+                    original.texture(),
+                    null,
+                    TextureLoader.CAPE_TEXTURE != null ? TextureLoader.CAPE_TEXTURE : original.capeTexture(),
+                    original.elytraTexture(),
+                    original.model(),
+                    false);
+            *///?}
 
             cir.setReturnValue(modified);
         }

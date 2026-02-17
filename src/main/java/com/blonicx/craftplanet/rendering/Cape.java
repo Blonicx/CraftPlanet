@@ -1,47 +1,36 @@
 package com.blonicx.craftplanet.rendering;
 
+import dev.blonicx.craftlib.api.identifier.GlobalIdentifier;
 import net.minecraft.core.ClientAsset;
 
 //? if >=1.21.11 {
-/*import net.minecraft.resources.Identifier;*/
+import net.minecraft.resources.Identifier;
 //?} else {
-import net.minecraft.resources.ResourceLocation;
-//?}
+/*import net.minecraft.resources.ResourceLocation;
+*///?}
 
-//? if >=1.21.11 {
-/*public class Cape implements ClientAsset.Texture {
-    Identifier id;
-
-    public Cape(Identifier identifier) {
-        id = identifier;
-    }
-
-    @Override
-    public Identifier texturePath() {
-        return id;
-    }
-
-    @Override
-    public Identifier id() {
-        return id;
-    }
-}*/
-//?} else {
 public class Cape implements ClientAsset.Texture {
-    ResourceLocation id;
+    GlobalIdentifier id;
 
-    public Cape(ResourceLocation identifier) {
+    public Cape(GlobalIdentifier identifier) {
         id = identifier;
     }
 
     @Override
-    public ResourceLocation texturePath() {
-        return id;
+    //? if >=1.21.11 {
+    public Identifier texturePath() {
+    //?} else {
+    /*public ResourceLocation texturePath() {
+     *///?}
+        return id.unwrap();
     }
 
-    @Override
-    public ResourceLocation id() {
-        return id;
+
+    //? if >=1.21.11 {
+    public Identifier id() {
+    //?} else {
+    /*public ResourceLocation id() {
+    *///?}
+        return id.unwrap();
     }
 }
-//?}

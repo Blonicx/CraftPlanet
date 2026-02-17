@@ -3,8 +3,9 @@ package com.blonicx.craftplanet.integration;
 
 import com.blonicx.craftplanet.CraftPlanet;
 import com.blonicx.craftplanet.resources.Cache;
-import com.blonicx.craftplanet.utils.CompatIdentifier;
 import com.google.gson.GsonBuilder;
+import dev.blonicx.craftlib.api.identifier.GlobalIdentifier;
+import dev.blonicx.craftlib.api.identifier.GlobalIdentifiers;
 import dev.blonicx.craftlib.api.particle.Particles;
 import dev.isxander.yacl3.api.*;
 import dev.isxander.yacl3.api.controller.IntegerFieldControllerBuilder;
@@ -16,8 +17,9 @@ import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.network.chat.Component;
 
 public class CPlanetConfig {
+    public static final GlobalIdentifier id = GlobalIdentifiers.of(CraftPlanet.MOD_ID, "config");
     public static final ConfigClassHandler<CPlanetConfig> INSTANCE = ConfigClassHandler.createBuilder(CPlanetConfig.class)
-            .id(CompatIdentifier.create(CraftPlanet.MOD_ID, "config"))
+            .id(id.unwrap())
             .serializer(config -> GsonConfigSerializerBuilder.create(config)
                     .setPath(FabricLoader.getInstance().getConfigDir().resolve("craftplanet.json"))
                     .appendGsonBuilder(GsonBuilder::setPrettyPrinting)

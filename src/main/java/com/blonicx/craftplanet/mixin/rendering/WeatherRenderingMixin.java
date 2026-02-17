@@ -17,7 +17,11 @@ import net.minecraft.world.phys.Vec3;
 @Mixin(WeatherEffectRenderer.class)
 public class WeatherRenderingMixin {
     @Inject(method = "renderInstances", at = @At("HEAD"), cancellable = true)
+    //? if >= 1.21.9 {
     void renderPieces(VertexConsumer vertexConsumer, List<WeatherEffectRenderer.ColumnInstance> pieces, Vec3 pos, float intensity, int range, float gradient, CallbackInfo ci) {
+    //?} else {
+    /*void renderPieces(VertexConsumer vertexConsumer, List<WeatherEffectRenderer> pieces, Vec3 pos, float intensity, int range, float gradient, CallbackInfo ci) {
+    *///?}
         if (CPlanetConfig.INSTANCE.instance().disableWeatherRendering) {
             ci.cancel();
         }
@@ -25,10 +29,10 @@ public class WeatherRenderingMixin {
 
     @Inject(method = "tickRainParticles", at = @At("HEAD"), cancellable = true)
     //? if >= 1.21.11 {
-    /*void addParticlesAndSound(ClientLevel world, Camera camera, int ticks, ParticleStatus particlesMode, int weatherRadius, CallbackInfo ci) {
-    *///?} else {
-    void addParticlesAndSound(ClientLevel clientLevel, Camera camera, int i, ParticleStatus particleStatus, CallbackInfo ci) {
-    //?}
+    void addParticlesAndSound(ClientLevel world, Camera camera, int ticks, ParticleStatus particlesMode, int weatherRadius, CallbackInfo ci) {
+    //?} else {
+    /*void addParticlesAndSound(ClientLevel clientLevel, Camera camera, int i, ParticleStatus particleStatus, CallbackInfo ci) {
+    *///?}
         if (CPlanetConfig.INSTANCE.instance().disableWeatherRendering) {
             ci.cancel();
         }

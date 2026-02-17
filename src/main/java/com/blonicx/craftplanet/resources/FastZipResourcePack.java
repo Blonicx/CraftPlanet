@@ -17,10 +17,10 @@ import net.minecraft.server.packs.PackType;
 import net.minecraft.server.packs.resources.IoSupplier;
 
 //? if >=1.21.11 {
-/*import net.minecraft.resources.Identifier;
- *///?} else {
-import net.minecraft.resources.ResourceLocation;
-//?}
+import net.minecraft.resources.Identifier;
+ //?} else {
+/*import net.minecraft.resources.ResourceLocation;
+*///?}
 
 // Credits: https://github.com/DrexHD/quick-pack/tree/main
 
@@ -128,7 +128,7 @@ public class FastZipResourcePack extends AbstractPackResources {
     }
 
     //? if >= 1.21.11 {
-    /*@Override
+    @Override
     public @Nullable IoSupplier<InputStream> getResource(PackType packType, Identifier id) {
         for (String prefix : prefixStack) {
 
@@ -140,8 +140,8 @@ public class FastZipResourcePack extends AbstractPackResources {
         }
         return null;
     }
-     *///?} else {
-    @Override
+     //?} else {
+    /*@Override
     public @Nullable IoSupplier<InputStream> getResource(PackType packType, ResourceLocation id) {
         for (String prefix : prefixStack) {
 
@@ -153,7 +153,7 @@ public class FastZipResourcePack extends AbstractPackResources {
         }
         return null;
     }
-    //?}
+    *///?}
 
     @Override
     public void listResources(PackType type, String namespace, String path, ResourceOutput out) {
@@ -169,10 +169,10 @@ public class FastZipResourcePack extends AbstractPackResources {
                     String rlPath = filePath.substring((prefix + type.getDirectory() + "/" + namespace + "/").length());
 
                     //? if >= 1.21.11 {
-                    /*Identifier id = CompatIdentifier.tryBuild(namespace, rlPath);
-                     *///?} else {
-                    ResourceLocation id = CompatIdentifier.tryBuild(namespace, rlPath);
-                    //?}
+                    Identifier id = CompatIdentifier.tryBuild(namespace, rlPath);
+                     //?} else {
+                    /*ResourceLocation id = CompatIdentifier.tryBuild(namespace, rlPath);
+                    *///?}
 
                     if (id == null) continue;
 
