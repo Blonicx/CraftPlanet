@@ -14,8 +14,9 @@ import org.lwjgl.glfw.GLFW;
 
 public class KeyInputEvents {
     private static final GlobalIdentifier id = GlobalIdentifiers.of(CraftPlanet.MOD_ID, "keybinds_category");
+    //? if >= 1.21.9 {
     private static final KeyMapping.Category CATEGORY = KeyMapping.Category.register(id.unwrap());
-
+     //?}
     private static final String KEY_COPY_COORDS = "key.craftplanet.copy_coords";
 
     // Keybinds
@@ -38,7 +39,11 @@ public class KeyInputEvents {
                 KEY_COPY_COORDS,
                 InputConstants.Type.KEYSYM,
                 GLFW.GLFW_KEY_B,
+                //? if >= 1.21.9 {
                 CATEGORY
+                 //?} else {
+                /*Component.translatable("key.category.craftplanet.keybinds_category").toString()
+                *///?}
         ));
 
         registerKeyInputs();

@@ -9,6 +9,7 @@ import net.minecraft.resources.Identifier;
 /*import net.minecraft.resources.ResourceLocation;
 *///?}
 
+//? if >= 1.21.9 {
 public class Cape implements ClientAsset.Texture {
     GlobalIdentifier id;
 
@@ -34,3 +35,4 @@ public class Cape implements ClientAsset.Texture {
         return id.unwrap();
     }
 }
+//?}

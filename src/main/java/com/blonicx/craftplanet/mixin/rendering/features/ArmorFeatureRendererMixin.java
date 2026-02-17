@@ -3,7 +3,6 @@ package com.blonicx.craftplanet.mixin.rendering.features;
 import com.blonicx.craftplanet.integration.CPlanetConfig;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.model.HumanoidModel;
-import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.entity.layers.HumanoidArmorLayer;
 import net.minecraft.client.renderer.entity.state.HumanoidRenderState;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -13,10 +12,20 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+//? if >= 1.21.9 {
+import net.minecraft.client.renderer.SubmitNodeCollector;
+ //?} else {
+/*import net.minecraft.client.renderer.MultiBufferSource;
+*///?}
+
 @Mixin(HumanoidArmorLayer.class)
 public class ArmorFeatureRendererMixin<S extends HumanoidRenderState, M extends HumanoidModel<S>, A extends HumanoidModel<S>> {
     @Inject(method = "renderArmorPiece", at = @At("HEAD"), cancellable = true)
+    //? if >= 1.21.9 {
     void render(PoseStack matrices, SubmitNodeCollector queue, ItemStack stack, EquipmentSlot slot, int light, S state, CallbackInfo ci) {
+     //?} else {
+    /*void render(PoseStack poseStack, MultiBufferSource multiBufferSource, ItemStack itemStack, EquipmentSlot equipmentSlot, int i, HumanoidModel humanoidModel, CallbackInfo ci) {
+    *///?}
         if (CPlanetConfig.INSTANCE.instance().disableArmorRendering) ci.cancel();
     }
 }

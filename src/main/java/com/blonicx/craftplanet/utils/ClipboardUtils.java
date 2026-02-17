@@ -8,6 +8,10 @@ public class ClipboardUtils {
         Minecraft client = Minecraft.getInstance();
 
         ClipboardManager clipboard = new ClipboardManager();
+        //? if >= 1.21.9 {
         clipboard.setClipboard(client.getWindow(), string);
+        //?} else {
+        /*clipboard.setClipboard(client.getWindow().getWindow(), string);
+        *///?}
     }
 }

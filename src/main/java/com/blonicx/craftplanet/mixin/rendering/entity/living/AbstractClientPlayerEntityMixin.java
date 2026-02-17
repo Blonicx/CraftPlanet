@@ -1,7 +1,6 @@
 package com.blonicx.craftplanet.mixin.rendering.entity.living;
 
 import com.blonicx.craftplanet.integration.CPlanetConfig;
-import com.blonicx.craftplanet.rendering.Cape;
 import com.blonicx.craftplanet.rendering.TextureLoader;
 import com.mojang.authlib.GameProfile;
 import net.fabricmc.loader.api.FabricLoader;
@@ -19,6 +18,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 //? if >= 1.21.9 {
 import net.minecraft.world.entity.player.PlayerSkin;
+import com.blonicx.craftplanet.rendering.Cape;
 //?} else {
 /*import net.minecraft.client.resources.PlayerSkin;
 *///?}
@@ -58,7 +58,7 @@ public abstract class AbstractClientPlayerEntityMixin {
             /*PlayerSkin modified = new PlayerSkin(
                     original.texture(),
                     null,
-                    TextureLoader.CAPE_TEXTURE != null ? TextureLoader.CAPE_TEXTURE : original.capeTexture(),
+                    TextureLoader.CAPE_TEXTURE != null ? TextureLoader.CAPE_TEXTURE.unwrap() : original.capeTexture(),
                     original.elytraTexture(),
                     original.model(),
                     false);
