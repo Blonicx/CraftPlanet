@@ -1,7 +1,8 @@
 package com.blonicx.craftplanet.resources;
 
 import com.blonicx.craftplanet.CraftPlanet;
-import com.blonicx.craftplanet.utils.CompatIdentifier;
+import dev.blonicx.craftlib.api.identifier.GlobalIdentifier;
+import dev.blonicx.craftlib.api.identifier.GlobalIdentifiers;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.ByteArrayInputStream;
@@ -93,7 +94,11 @@ public class FastZipResourcePack extends AbstractPackResources {
             namespace = parts[1];
         } else return;
 
-        if (CompatIdentifier.isValidNamespace(namespace)) {
+        //? if >= 1.21.11 {
+        if (Identifier.isValidNamespace(namespace)) {
+        //?} else {
+        /*if (ResourceLocation.isValidNamespace(namespace)) {
+         *///?}
             namespaces.computeIfAbsent(type, s -> new HashSet<>()).add(namespace);
         } else {
             CraftPlanet.LOGGER.warn("Invalid namespace {} in pack {}", namespace, zipFile);
@@ -168,15 +173,11 @@ public class FastZipResourcePack extends AbstractPackResources {
                 if (filePath.startsWith(p)) {
                     String rlPath = filePath.substring((prefix + type.getDirectory() + "/" + namespace + "/").length());
 
-                    //? if >= 1.21.11 {
-                    Identifier id = CompatIdentifier.tryBuild(namespace, rlPath);
-                     //?} else {
-                    /*ResourceLocation id = CompatIdentifier.tryBuild(namespace, rlPath);
-                    *///?}
+                    GlobalIdentifier id = GlobalIdentifiers.of(namespace, rlPath);
 
-                    if (id == null) continue;
+                    if (id.tryBuild() == null) continue;
 
-                    out.accept(id, () -> new ByteArrayInputStream(Objects.requireNonNull(loadFile(filePath))));
+                    out.accept(id.tryBuild(), () -> new ByteArrayInputStream(Objects.requireNonNull(loadFile(filePath))));
                 }
             }
         }
