@@ -28,7 +28,12 @@ public class TextureLoader {
 
         try (FileInputStream stream = new FileInputStream(file)) {
             NativeImage image = NativeImage.read(stream);
+            //? if >= 1.21.6 {
             DynamicTexture texture = new DynamicTexture(() -> CraftPlanet.MOD_ID + "/cache/" + textureName, image);
+            //?} else {
+            /*DynamicTexture texture = new DynamicTexture(image);
+            *///?}
+
 
             GlobalIdentifier id = GlobalIdentifiers.of(CraftPlanet.MOD_ID, "cache/" + textureName);
 

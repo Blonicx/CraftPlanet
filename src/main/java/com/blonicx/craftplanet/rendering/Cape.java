@@ -1,13 +1,17 @@
 package com.blonicx.craftplanet.rendering;
 
 import dev.blonicx.craftlib.api.identifier.GlobalIdentifier;
-import net.minecraft.core.ClientAsset;
+
 
 //? if >=1.21.11 {
 import net.minecraft.resources.Identifier;
 //?} else {
 /*import net.minecraft.resources.ResourceLocation;
 *///?}
+
+//? if >= 1.21.6 {
+import net.minecraft.core.ClientAsset;
+//?}
 
 //? if >= 1.21.9 {
 public class Cape implements ClientAsset.Texture {

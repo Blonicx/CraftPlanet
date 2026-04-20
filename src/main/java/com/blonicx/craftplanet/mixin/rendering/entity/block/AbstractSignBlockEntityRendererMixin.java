@@ -4,11 +4,16 @@ import com.blonicx.craftplanet.integration.CPlanetConfig;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
-import net.minecraft.client.renderer.blockentity.AbstractSignRenderer;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+
+//? if >= 1.21.6 {
+import net.minecraft.client.renderer.blockentity.AbstractSignRenderer;
+//?} else {
+/*import net.minecraft.client.renderer.blockentity.SignRenderer;
+*///?}
 
 //? if >= 1.21.9 {
 import net.minecraft.client.renderer.blockentity.state.SignRenderState;
@@ -19,7 +24,11 @@ import net.minecraft.world.level.block.entity.SignText;
 import net.minecraft.client.renderer.MultiBufferSource;
 *///?}
 
+//? if >= 1.21.6 {
 @Mixin(AbstractSignRenderer.class)
+//?} else {
+/*@Mixin(SignRenderer.class)
+*///?}
 public class AbstractSignBlockEntityRendererMixin {
     //? if >= 1.21.9 {
     @Inject(method = "submitSignText", at = @At("HEAD"), cancellable = true)

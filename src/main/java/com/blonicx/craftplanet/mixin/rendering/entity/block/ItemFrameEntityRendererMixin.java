@@ -6,8 +6,8 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.ItemFrameRenderer;
-import net.minecraft.client.renderer.entity.state.ItemFrameRenderState;
 import net.minecraft.core.BlockPos;
+import net.minecraft.world.entity.decoration.ItemFrame;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -16,9 +16,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 //? if >= 1.21.9 {
 import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.state.CameraRenderState;
-//?} else {
-
-//?}
+//?} else if >= 1.21.6 {
+/*import net.minecraft.client.renderer.entity.state.ItemFrameRenderState;
+*///?}
 
 @Mixin(ItemFrameRenderer.class)
 public class ItemFrameEntityRendererMixin {
@@ -30,7 +30,7 @@ public class ItemFrameEntityRendererMixin {
         assert player!=null;
         if (!player.blockPosition().closerToCenterThan(cameraRenderState.pos, CPlanetConfig.INSTANCE.instance().maxItemFrameRenderDistance)) ci.cancel();
     }
-     //?} else {
+     //?} else if >= 1.21.6 {
     /*@Inject(method = "render(Lnet/minecraft/client/renderer/entity/state/ItemFrameRenderState;Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;I)V", at = @At("HEAD"), cancellable = true)
     void render(ItemFrameRenderState itemFrameRenderState, PoseStack poseStack, MultiBufferSource multiBufferSource, int i, CallbackInfo ci) {
         LocalPlayer player = Minecraft.getInstance().player;
@@ -40,5 +40,16 @@ public class ItemFrameEntityRendererMixin {
         assert player!=null;
         if (!player.blockPosition().closerThan(pos, CPlanetConfig.INSTANCE.instance().maxItemFrameRenderDistance)) ci.cancel();
     }
+    *///?} else {
+    /*@Inject(method = "render(Lnet/minecraft/world/entity/decoration/ItemFrame;FFLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;I)V", at = @At("HEAD"), cancellable = true)
+    void render(ItemFrame itemFrame, float f, float g, PoseStack poseStack, MultiBufferSource multiBufferSource, int i, CallbackInfo ci) {
+        LocalPlayer player = Minecraft.getInstance().player;
+
+        BlockPos pos = itemFrame.getPos();
+
+        assert player!=null;
+        if (!player.blockPosition().closerThan(pos, CPlanetConfig.INSTANCE.instance().maxItemFrameRenderDistance)) ci.cancel();
+    }
+
     *///?}
 }
